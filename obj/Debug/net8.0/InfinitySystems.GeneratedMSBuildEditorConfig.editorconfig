@@ -9,63 +9,63 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = InfinitySystems
 build_property.RootNamespace = InfinitySystems
-build_property.ProjectDir = /Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/
+build_property.ProjectDir = C:\Users\Administrator\Source\Repos\InfinitySystems\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /Users/momenashraf/Downloads/InfinitySystems/InfinitySystems
+build_property.MSBuildProjectDirectory = C:\Users\Administrator\Source\Repos\InfinitySystems
 build_property._RazorSourceGeneratorDebug = 
 
-[/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/Views/Comms/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ29tbXMvSW5kZXguY3NodG1s
+[C:/Users/Administrator/Source/Repos/InfinitySystems/Views/Comms/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tbXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/Views/Device/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRGV2aWNlL0luZGV4LmNzaHRtbA==
+[C:/Users/Administrator/Source/Repos/InfinitySystems/Views/Device/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGV2aWNlXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/Views/Event/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRXZlbnQvSW5kZXguY3NodG1s
+[C:/Users/Administrator/Source/Repos/InfinitySystems/Views/Event/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/Views/Finance/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRmluYW5jZS9JbmRleC5jc2h0bWw=
+[C:/Users/Administrator/Source/Repos/InfinitySystems/Views/Finance/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmluYW5jZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/Views/Home/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
+[C:/Users/Administrator/Source/Repos/InfinitySystems/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/Views/Login/Login.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTG9naW4vTG9naW4uY3NodG1s
+[C:/Users/Administrator/Source/Repos/InfinitySystems/Views/Login/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cTG9naW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/Views/Room/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUm9vbS9JbmRleC5jc2h0bWw=
+[C:/Users/Administrator/Source/Repos/InfinitySystems/Views/Room/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9vbVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/Views/Shared/Error.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
+[C:/Users/Administrator/Source/Repos/InfinitySystems/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/Views/Shared/_ValidationScriptsPartial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+[C:/Users/Administrator/Source/Repos/InfinitySystems/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/Views/Task/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVGFzay9JbmRleC5jc2h0bWw=
+[C:/Users/Administrator/Source/Repos/InfinitySystems/Views/Task/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFza1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/Views/_ViewImports.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+[C:/Users/Administrator/Source/Repos/InfinitySystems/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/Views/_ViewStart.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
+[C:/Users/Administrator/Source/Repos/InfinitySystems/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/Views/Shared/_Layout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = b-17kyj2vzxn
+[C:/Users/Administrator/Source/Repos/InfinitySystems/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-64heh0ow31
