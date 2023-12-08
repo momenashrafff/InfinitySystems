@@ -1,0 +1,345 @@
+{
+  "Files": [
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/obj/Debug/net8.0/scopedcss/projectbundle/InfinitySystems.bundle.scp.css",
+      "PackagePath": "staticwebassets/InfinitySystems.bundle.scp.css"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/Logo.ico",
+      "PackagePath": "staticwebassets/Logo.ico"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/css/Login_Register.css",
+      "PackagePath": "staticwebassets/css/Login_Register.css"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/css/Logo.ico",
+      "PackagePath": "staticwebassets/css/Logo.ico"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/css/site.css",
+      "PackagePath": "staticwebassets/css/site.css"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/favicon.ico",
+      "PackagePath": "staticwebassets/favicon.ico"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/images/Comms(1).png",
+      "PackagePath": "staticwebassets/images/Comms(1).png"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/images/Comms.png",
+      "PackagePath": "staticwebassets/images/Comms.png"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/images/Devices(1).png",
+      "PackagePath": "staticwebassets/images/Devices(1).png"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/images/Devices.png",
+      "PackagePath": "staticwebassets/images/Devices.png"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/images/Events(1).png",
+      "PackagePath": "staticwebassets/images/Events(1).png"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/images/Events.png",
+      "PackagePath": "staticwebassets/images/Events.png"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/images/Finance(1).png",
+      "PackagePath": "staticwebassets/images/Finance(1).png"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/images/Finance.png",
+      "PackagePath": "staticwebassets/images/Finance.png"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/images/HomePage(1).png",
+      "PackagePath": "staticwebassets/images/HomePage(1).png"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/images/HomePage.png",
+      "PackagePath": "staticwebassets/images/HomePage.png"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/images/LoginBG.jpg",
+      "PackagePath": "staticwebassets/images/LoginBG.jpg"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/images/Logo.png",
+      "PackagePath": "staticwebassets/images/Logo.png"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/images/Rooms(1).png",
+      "PackagePath": "staticwebassets/images/Rooms(1).png"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/images/Rooms.png",
+      "PackagePath": "staticwebassets/images/Rooms.png"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/images/Tasks(1).png",
+      "PackagePath": "staticwebassets/images/Tasks(1).png"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/images/Tasks.png",
+      "PackagePath": "staticwebassets/images/Tasks.png"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/js/Login_Register.js",
+      "PackagePath": "staticwebassets/js/Login_Register.js"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/js/site.js",
+      "PackagePath": "staticwebassets/js/site.js"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/bootstrap/LICENSE",
+      "PackagePath": "staticwebassets/lib/bootstrap"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.css"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.css.map"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.min.css"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.css"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.css"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/bootstrap/dist/css/bootstrap.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.css"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/bootstrap/dist/css/bootstrap.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.css.map"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.min.css"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.min.css.map"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.rtl.css"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.bundle.js"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.esm.js"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.esm.js.map"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.esm.min.js"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/bootstrap/dist/js/bootstrap.js",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.js"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/bootstrap/dist/js/bootstrap.js.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.js.map"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.min.js"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.min.js.map"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/jquery-validation-unobtrusive/LICENSE.txt",
+      "PackagePath": "staticwebassets/lib/jquery-validation-unobtrusive/LICENSE.txt"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/jquery-validation/LICENSE.md",
+      "PackagePath": "staticwebassets/lib/jquery-validation/LICENSE.md"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/jquery-validation/dist/additional-methods.js",
+      "PackagePath": "staticwebassets/lib/jquery-validation/dist/additional-methods.js"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/jquery-validation/dist/additional-methods.min.js",
+      "PackagePath": "staticwebassets/lib/jquery-validation/dist/additional-methods.min.js"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/jquery-validation/dist/jquery.validate.js",
+      "PackagePath": "staticwebassets/lib/jquery-validation/dist/jquery.validate.js"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/jquery-validation/dist/jquery.validate.min.js",
+      "PackagePath": "staticwebassets/lib/jquery-validation/dist/jquery.validate.min.js"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/jquery/LICENSE.txt",
+      "PackagePath": "staticwebassets/lib/jquery/LICENSE.txt"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/jquery/dist/jquery.js",
+      "PackagePath": "staticwebassets/lib/jquery/dist/jquery.js"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/jquery/dist/jquery.min.js",
+      "PackagePath": "staticwebassets/lib/jquery/dist/jquery.min.js"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/lib/jquery/dist/jquery.min.map",
+      "PackagePath": "staticwebassets/lib/jquery/dist/jquery.min.map"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.InfinitySystems.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.build.InfinitySystems.props",
+      "PackagePath": "build\\InfinitySystems.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.InfinitySystems.props",
+      "PackagePath": "buildMultiTargeting\\InfinitySystems.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.InfinitySystems.props",
+      "PackagePath": "buildTransitive\\InfinitySystems.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

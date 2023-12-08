@@ -1,0 +1,105 @@
+﻿@using Microsoft.AspNetCore.Mvc.Rendering;
+@model InfinitySystems.Models.Users
+@{
+    ViewData["Title"] = "Login/Register";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0" />
+    <link rel="stylesheet" href="~/css/Login_Register.css" />
+</head>
+
+<body>
+    <div class="flex-container">
+        <img id="logo" src="~/images/Logo.png" alt="Logo">
+        <div class="container">
+            <div class="slider"></div>
+            <div class="btn">
+                <button class="login">Login</button>
+                <button class="signup">Signup</button>
+            </div>
+
+            <div class="form-section">
+                @using(Html.BeginForm("Login", "Login", FormMethod.Post)){
+                @* <form method="post" enctype="multipart/form-data" asp-conotroller="Login" asp-action="Login"> *@
+                    @* if(ViewBag.LoginStatus != null){
+                        if(ViewBag.LoginStatus == 0){
+                            <div>
+                                Email or Password is Incorrect
+                            </div>
+                        }
+                    } *@
+                    
+                    <div class="login-box">
+                        @* <input type="email"
+                               class="email ele"
+                               placeholder="youremail@email.com"
+                               name="Email"
+                               required /> *@
+                            @Html.TextBoxFor(m => m.Email, new { @class = "email ele", @placeholder = "Email", @required = "required", @maxlength="50" })
+                        @* <input type="password"
+                               class="password ele"
+                               placeholder="Password"
+                               name="Pasword"
+                               required /> *@
+                            @Html.PasswordFor(m => m.Password, new { @class = "password ele", @placeholder = "Password", @required = "required", @maxlength="10"})
+                        <input type="submit" class="clkbtn" value="Login" />
+                    </div>
+                @* </form> *@
+                }
+                
+                @using(Html.BeginForm("SignUp", "Login", FormMethod.Post)){
+                @* <form method="post" enctype="multipart/form-data" asp-conotroller="Login" asp-action="SignUp"> *@
+                    @* if(ViewBag.SignUpStatus != null){
+                        if(ViewBag.SignUpStatus == 0){
+                            <div>
+                                Email is Taken
+                            </div>
+                        }
+                    } *@
+                    <div class="flex-container">
+                        <div class="signup-box">
+                            @Html.TextBoxFor(m => m.F_Name, new { @class = "name ele", @placeholder = "Enter First Name", @required = "required", @maxlength="20" })
+                            @* <input type="text"
+                                   class="name ele"
+                                   placeholder="Enter First Name"
+                                   name="FName"
+                                   required /> *@
+                            @Html.TextBoxFor(m => m.L_Name, new { @class = "name ele", @placeholder = "Enter Last Name", @required = "required", @maxlength="20" })
+                            @* <input type="text"
+                                   class="name ele"
+                                   placeholder="Enter Last Name"
+                                   name="LName"
+                                   required /> *@
+                            @Html.TextBoxFor(m => m.Email, new { @class = "email ele", @placeholder = "Enter Email", @required = "required", @maxlength="50" })
+                            @* <input type="email"
+                                   class="email ele"
+                                   placeholder="youremail@email.com"
+                                   name="Mail"
+                                   required /> *@
+                            @Html.PasswordFor(m => m.Password, new { @class = "password ele", @placeholder = "Password", @required = "required", @maxlength="10"})
+                            @* <input type="password"
+                                   class="password ele"
+                                   placeholder="Password"
+                                   name="Pass"
+                                   required /> *@
+                            <p class="birth">
+                                Select Birthdate
+                            @Html.TextBoxFor(m => m.Birth_Date, new { @type="date", @class = "birthdate", @placeholder = "Birthdate", @required = "required" })
+                            </p>
+                            @* <input type="date" class="birthdate" placeholder="Birthdate" required name="BirthDate" /> *@
+                            <input type="submit" class="clkbtn" value="Signup" name="RegisterB" />
+                        </div>
+                    </div>
+                @* </form> *@
+                }
+            </div>
+        </div>
+    </div>
+    <script src="~/js/Login_Register.js"></script>
+</body>
+</html>

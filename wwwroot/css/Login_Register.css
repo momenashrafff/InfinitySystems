@@ -1,0 +1,320 @@
+﻿@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  background: url("../images/LoginBG.jpg");
+  background-size: cover;
+  overflow: hidden;
+}
+
+.flex-container {
+  display: flex;
+  height: 850px;
+  background: rgba(255, 255, 255, 0);
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.225);
+  border-radius: 50px;
+  backdrop-filter: blur(7px);
+}
+
+#logo {
+  width: 25%;
+  border-radius: 50%;
+  box-shadow: 0 0 7.5px #fff;
+  transform: translateY(20px);
+}
+
+.container {
+  height: 850px;
+  width: 800px;
+  margin-top: 40px;
+  background: rgba(255, 255, 255, 0);
+  position: center;
+  overflow: hidden;
+}
+
+.btn {
+  height: 60px;
+  width: 250px;
+  margin: 20px auto;
+  box-shadow: 10px 10px 30px #444;
+  border-radius: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  transform: translateX(-10px);
+}
+
+.login,
+.signup {
+  font-size: 22px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  position: relative;
+  margin-right: -30px;
+  cursor: pointer;
+  transform: translateX(-5px);
+}
+
+.slider {
+  height: 60px;
+  width: 115px;
+  border-radius: 50px;
+  background-image: linear-gradient(
+    90deg,
+    rgb(255, 255, 255, 0.75) 10%,
+    rgb(128, 128, 128, 0.75) 100%
+  );
+  position: absolute;
+  top: 250px;
+  left: 265px;
+  transition: all 0.5s ease-in-out;
+  transform: translateX(0px);
+}
+
+.moveslider {
+  left: 400px;
+}
+
+.form-section {
+  height: 500px;
+  width: 1000px;
+  padding: 20px 0;
+  display: flex;
+  position: relative;
+  transition: all 0.5s ease-in-out;
+  left: -200px;
+}
+
+.form-section-move {
+  left: -1200px;
+}
+
+.login-box,
+.signup-box {
+  height: 100% auto;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 40px;
+  position: absolute;
+}
+
+.login-box {
+  margin-top: 50;
+  gap: 25px;
+  position: absolute;
+  left: 320px;
+}
+
+.signup-box {
+  gap: 10px;
+  position: absolute;
+  left: 1330px;
+}
+
+.ele {
+  height: 60px;
+  width: 400px;
+  outline: none;
+  border: none;
+  color: black;
+  background: rgba(255, 255, 255, 0.4);
+  -webkit-backdrop-filter: blur(7px);
+  backdrop-filter: blur(7px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50px;
+  padding-left: 30px;
+  font-size: 18px;
+}
+
+.clkbtn {
+  height: 60px;
+  width: 150px;
+  border-radius: 50px;
+  background-image: linear-gradient(
+    90deg,
+    rgb(255, 255, 255, 0.75) 35%,
+    rgb(128, 128, 128, 0.75) 100%
+  );
+  font-size: 22px;
+  border: none;
+  cursor: pointer;
+}
+
+.flex-container div {
+  flex-wrap: wrap;
+}
+
+/* birthdate::before */
+birthdate::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+input[type="date"] {
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0);
+  padding: 15px;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  border-radius: 50px;
+}
+
+::webkit-calendar-picker-indicator {
+  background: rgba(255, 255, 255, 0.4);
+  -webkit-backdrop-filter: blur(7px);
+  backdrop-filter: blur(7px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.birth {
+  height: 60px;
+  width: 400px;
+  outline: none;
+  border: none;
+  color: rgb(0, 0, 0, 1);
+  background: rgba(255, 255, 255, 0);
+  border-radius: 50px;
+  padding-left: 40px;
+  font-size: 18px;
+}
+
+@media screen and (max-width: 650px) {
+  .container {
+    height: 600px;
+    width: 300px;
+  }
+
+  .title {
+    font-size: 15px;
+  }
+
+  .btn {
+    height: 50px;
+    width: 200px;
+    margin: 20px auto;
+  }
+
+  .login,
+  .signup {
+    font-size: 19px;
+  }
+
+  .slider {
+    height: 50px;
+    width: 100px;
+    left: 50px;
+  }
+
+  .moveslider {
+    left: 150px;
+  }
+
+  .form-section {
+    height: 500px;
+    width: 600px;
+  }
+
+  .form-section-move {
+    left: -300px;
+  }
+
+  .login-box,
+  .signup-box {
+    height: 100%;
+    width: 300px;
+  }
+
+  .ele {
+    height: 50px;
+    width: 250px;
+    font-size: 15px;
+  }
+
+  .clkbtn {
+    height: 50px;
+    width: 130px;
+    font-size: 19px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .container {
+    height: 600px;
+    width: 250px;
+  }
+
+  .heading {
+    font-size: 30px;
+  }
+
+  .title {
+    font-size: 10px;
+  }
+
+  .btn {
+    height: 50px;
+    width: 200px;
+    margin: 20px auto;
+  }
+
+  .login,
+  .signup {
+    font-size: 19px;
+  }
+
+  .slider {
+    height: 50px;
+    width: 100px;
+    left: 27px;
+  }
+
+  .moveslider {
+    left: 127px;
+  }
+
+  .form-section {
+    height: 500px;
+    width: 500px;
+  }
+
+  .form-section-move {
+    left: -250px;
+  }
+
+  .login-box,
+  .signup-box {
+    height: 100%;
+    width: 250px;
+  }
+
+  .ele {
+    height: 50px;
+    width: 220px;
+    font-size: 15px;
+  }
+
+  .clkbtn {
+    height: 50px;
+    width: 130px;
+    font-size: 19px;
+  }
+}
