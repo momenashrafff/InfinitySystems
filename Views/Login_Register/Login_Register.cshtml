@@ -1,0 +1,124 @@
+﻿@using Microsoft.AspNetCore.Mvc.Rendering;
+@model InfinitySystems.Models.Users
+@{
+ViewData["Title"] = "Login/Register";
+}
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <link rel="stylesheet" href="~/css/Login_Register.css" />
+   </head>
+   <body>
+      <div id="particles-js"></div>
+      <script type="text/javascript" src="~/js/particles.js"></script>
+      <script type="text/javascript" src="~/js/app.js"></script>
+      <div class="flex-container">
+         <section>
+            <div class="circle">
+               <span style="--rot: 0"></span>
+               <span style="--rot: 1"></span>
+               <span style="--rot: 2"></span>
+               <span style="--rot: 3"></span>
+               <span style="--rot: 4"></span>
+               <span style="--rot: 5"></span>
+               <span style="--rot: 6"></span>
+               <span style="--rot: 7"></span>
+               <span style="--rot: 8"></span>
+               <span style="--rot: 9"></span>
+               <span style="--rot: 10"></span>
+               <span style="--rot: 11"></span>
+               <span style="--rot: 12"></span>
+               <span style="--rot: 13"></span>
+               <span style="--rot: 14"></span>
+               <span style="--rot: 15"></span>
+               <span style="--rot: 16"></span>
+               <span style="--rot: 17"></span>
+               <span style="--rot: 18"></span>
+               <span style="--rot: 19"></span>
+               <span style="--rot: 20"></span>
+            </div>
+            <div class="circle">
+               <span style="--rot: 0"></span>
+               <span style="--rot: 1"></span>
+               <span style="--rot: 2"></span>
+               <span style="--rot: 3"></span>
+               <span style="--rot: 4"></span>
+               <span style="--rot: 5"></span>
+               <span style="--rot: 6"></span>
+               <span style="--rot: 7"></span>
+               <span style="--rot: 8"></span>
+               <span style="--rot: 9"></span>
+               <span style="--rot: 10"></span>
+               <span style="--rot: 11"></span>
+               <span style="--rot: 12"></span>
+               <span style="--rot: 13"></span>
+               <span style="--rot: 14"></span>
+               <span style="--rot: 15"></span>
+               <span style="--rot: 16"></span>
+               <span style="--rot: 17"></span>
+               <span style="--rot: 18"></span>
+               <span style="--rot: 19"></span>
+               <span style="--rot: 20"></span>
+            </div>
+         </section>
+         <div class="container">
+            <div class="slider"></div>
+            <div class="btn">
+               <button class="login">Login</button>
+               <button class="signup">Signup</button>
+            </div>
+            <div class="form-section">
+               @using(Html.BeginForm("Login", "Login", FormMethod.Post)){
+               @* 
+               <form method="post" enctype="multipart/form-data" asp-conotroller="Login" asp-action="Login">
+                  *@
+                  @* if(ViewBag.LoginStatus != null){
+                  if(ViewBag.LoginStatus == 0){
+                  <div>
+                     Email or Password is Incorrect
+                  </div>
+                  }
+                  } *@
+                  <div class="login-box">
+                     @Html.TextBoxFor(m => m.Email, new { @class = "email ele", @placeholder = "Email", @required = "required", @maxlength="50" })
+                     @Html.PasswordFor(m => m.Password, new { @class = "password ele", @placeholder = "Password", @required = "required", @maxlength="10"})
+                     <input type="submit" class="clkbtn" value="Login" />
+                  </div>
+                  @* 
+               </form>
+               *@
+               }
+               @using(Html.BeginForm("SignUp", "Login", FormMethod.Post)){
+               @* 
+               <form method="post" enctype="multipart/form-data" asp-conotroller="Login" asp-action="SignUp">
+                  *@
+                  @* if(ViewBag.SignUpStatus != null){
+                  if(ViewBag.SignUpStatus == 0){
+                  <div>
+                     Email is Taken
+                  </div>
+                  }
+                  } *@
+                  <div class="flex-container">
+                     <div class="signup-box">
+                        @Html.TextBoxFor(m => m.F_Name, new { @class = "name ele", @placeholder = "Enter First Name", @required = "required", @maxlength="20" })
+                        @Html.TextBoxFor(m => m.L_Name, new { @class = "name ele", @placeholder = "Enter Last Name", @required = "required", @maxlength="20" })
+                        @Html.TextBoxFor(m => m.Email, new { @class = "email ele", @placeholder = "Enter Email", @required = "required", @maxlength="50" })
+                        @Html.PasswordFor(m => m.Password, new { @class = "password ele", @placeholder = "Password", @required = "required", @maxlength="10"})
+                        <p class="birth">
+                           @Html.TextBoxFor(m => m.Birth_Date, new { @type="date", @class = "birthdate", @placeholder = "Birthdate", @required = "required" })
+                        </p>
+                        <input type="submit" class="clkbtn" value="Signup" name="RegisterB" />
+                     </div>
+                  </div>
+                  @* 
+               </form>
+               *@
+               }
+            </div>
+         </div>
+      </div>
+      <script src="~/js/Login_Register.js"></script>
+   </body>
+</html>
