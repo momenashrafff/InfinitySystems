@@ -2,7 +2,7 @@
 .vscode/
 
 # Ignore .NET build output
-bin/Debug/net8.0/
+bin/
 obj/
 
 # Ignore user-specific files
