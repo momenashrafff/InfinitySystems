@@ -63,4 +63,4 @@ $RECYCLE.BIN/
 .idea/
 
 # Ignore appsettings.json
-~/appsettings.jsons
+appSettings.Local.json
