@@ -69,7 +69,8 @@ ViewData["Title"] = "Login/Register";
                <button class="signup">Signup</button>
             </div>
             <div class="form-section">
-               @using(Html.BeginForm("Login", "Login", FormMethod.Post)){
+                @using (Html.BeginForm("Login", "Login_Register", FormMethod.Post))
+                {
                @* 
                <form method="post" enctype="multipart/form-data" asp-conotroller="Login" asp-action="Login">
                   *@
@@ -89,7 +90,8 @@ ViewData["Title"] = "Login/Register";
                </form>
                *@
                }
-               @using(Html.BeginForm("SignUp", "Login", FormMethod.Post)){
+                @using (Html.BeginForm("SignUp", "Login_Register", FormMethod.Post))
+                {
                @* 
                <form method="post" enctype="multipart/form-data" asp-conotroller="Login" asp-action="SignUp">
                   *@
