@@ -93,6 +93,14 @@
       "PackagePath": "staticwebassets/js/Login_Register.js"
     },
     {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/js/app.js",
+      "PackagePath": "staticwebassets/js/app.js"
+    },
+    {
+      "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/js/particles.js",
+      "PackagePath": "staticwebassets/js/particles.js"
+    },
+    {
       "Id": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/js/site.js",
       "PackagePath": "staticwebassets/js/site.js"
     },

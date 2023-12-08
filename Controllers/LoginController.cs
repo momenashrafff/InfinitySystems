@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Data.SqlClient;
 using System.Data;
+using Microsoft.Extensions.Configuration;
 
 namespace InfinitySystems.Controllers
 {
@@ -55,7 +56,7 @@ namespace InfinitySystems.Controllers
             sqlConnection.Close();
             // Response.WriteAsync(success.Value.ToString());
 
-            if (success.Value.ToString().Equals("0"))
+            if (success.Value.ToString().Equals("False"))
             {
                 ViewBag.LoginStatus = 0;
                 return View(user);

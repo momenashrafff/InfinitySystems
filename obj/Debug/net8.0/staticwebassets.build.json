@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "mHTKi1DgxNMBfVtpvzTrUHDCKBesOqUEmJ6jNEkRoiU=",
+  "Hash": "N8bEgYo6oIIbGdxTUcJryaPocFRqkbaynsoqQjKUtqc=",
   "Source": "InfinitySystems",
   "BasePath": "_content/InfinitySystems",
   "Mode": "Default",
@@ -435,6 +435,25 @@
       "OriginalItemSpec": "wwwroot/images/Tasks(1).png"
     },
     {
+      "Identity": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/js/app.js",
+      "SourceId": "InfinitySystems",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/",
+      "BasePath": "_content/InfinitySystems",
+      "RelativePath": "js/app.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/js/app.js"
+    },
+    {
       "Identity": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/js/Login_Register.js",
       "SourceId": "InfinitySystems",
       "SourceType": "Discovered",
@@ -452,6 +471,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/js/Login_Register.js"
+    },
+    {
+      "Identity": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/js/particles.js",
+      "SourceId": "InfinitySystems",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/",
+      "BasePath": "_content/InfinitySystems",
+      "RelativePath": "js/particles.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/js/particles.js"
     },
     {
       "Identity": "/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/wwwroot/js/site.js",

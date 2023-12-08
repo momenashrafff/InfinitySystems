@@ -134,3 +134,4 @@
 /Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/obj/Debug/net8.0/InfinitySystems.pdb
 /Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/obj/Debug/net8.0/InfinitySystems.genruntimeconfig.cache
 /Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/obj/Debug/net8.0/ref/InfinitySystems.dll
+/Users/momenashraf/Downloads/InfinitySystems/InfinitySystems/obj/Debug/net8.0/InfinitySystems.sourcelink.json
