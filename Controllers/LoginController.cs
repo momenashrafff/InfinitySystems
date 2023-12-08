@@ -12,13 +12,13 @@ using Microsoft.Extensions.Configuration;
 
 namespace InfinitySystems.Controllers
 {
-    public class Login_RegisterController : Controller
+    public class LoginController : Controller
     {
         private readonly IConfiguration _configuration;
 
         // private readonly ILogin _loginUser;
 
-        public Login_RegisterController(IConfiguration configuration)
+        public LoginController(IConfiguration configuration)
         {
             _configuration = configuration;
 
@@ -26,7 +26,7 @@ namespace InfinitySystems.Controllers
         }
         [HttpGet]
         // [Route("Login")]
-        public IActionResult Login_Register()
+        public IActionResult Login()
         {
             Users user = new();
             return View(user);
@@ -100,7 +100,7 @@ namespace InfinitySystems.Controllers
             if (user_id.Value.ToString().Equals("-1"))
             {
                 ViewBag.SignUpStatus = 0;
-                return RedirectToAction("Login_Register", "Login_Register");
+                return RedirectToAction("Login", "Login");
             }
             else
             {
