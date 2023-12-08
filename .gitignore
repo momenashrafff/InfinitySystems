@@ -1,4 +1,4 @@
-﻿# Ignore Visual Studio Code folder
+# Ignore Visual Studio Code folder
 .vscode/
 
 # Ignore .NET build output
@@ -109,4 +109,3 @@ $RECYCLE.BIN/
 # Ignore appsettings.json
 appsettings.json
 
-/.vs/InfinitySystems
