@@ -63,4 +63,7 @@ $RECYCLE.BIN/
 .idea/
 
 # Ignore appsettings.json
-appSettings.Local.json
+appsettings.json
+
+# Ignore Visual Studio folder
+.vs/
