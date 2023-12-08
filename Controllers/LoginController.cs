@@ -100,7 +100,7 @@ namespace InfinitySystems.Controllers
             if (user_id.Value.ToString().Equals("-1"))
             {
                 ViewBag.SignUpStatus = 0;
-                return View(user);
+                return RedirectToAction("Login", "Login");
             }
             else
             {
