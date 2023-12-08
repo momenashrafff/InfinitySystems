@@ -65,5 +65,8 @@ $RECYCLE.BIN/
 # Ignore appsettings.json
 appsettings.json
 
+# Ignore appsettings.Development.json
+appsettings.Development.json
+
 # Ignore Visual Studio folder
 .vs/
