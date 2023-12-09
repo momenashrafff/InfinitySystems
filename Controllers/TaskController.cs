@@ -15,6 +15,11 @@ namespace InfinitySystems.Controllers
 
         public IActionResult Index()
         {
+            int? Id = HttpContext.Session.GetInt32("SessionUserId");
+            if (Id == null || Id.Value == -1)
+            {
+                return RedirectToAction("Login_Register", "Login_Register");
+            }
             return View();
         }
 

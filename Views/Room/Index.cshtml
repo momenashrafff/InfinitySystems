@@ -1,0 +1,62 @@
+@using Microsoft.AspNetCore.Mvc.Rendering;
+@using InfinitySystems.Models;
+@model InfinitySystems.Models.Room
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rooms</title>
+  </head>
+  <body>
+    <script type="text/javascript" src="~/js/particles.js"></script>
+      <script type="text/javascript" src="~/js/app.js"></script>
+    <h1>Rooms</h1>
+    <h2>Your Room</h2>
+    
+    @foreach(var room in ViewBag.Rooms){
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">@room.Id</h5>
+                <h6 class="card-subtitle mb-2 text-muted">@room.Type</h6>
+                <p class="card-text">@room.Status</p>
+            </div>
+        </div>
+    }
+
+    @using(Html.BeginForm("RoomBook", "Room", FormMethod.Post)){
+        if(TempData["Book"] != null){
+            <div class="alert alert-success" role="alert">
+            @TempData["Book"]
+          </div>
+        }
+        if(TempData["Not Book"] != null){
+          <div class="alert alert-danger" role="alert">
+            @TempData["Not Book"]
+          </div> 
+        }
+        
+       
+        <p>Book A Room</p>
+        @Html.TextBoxFor(m => m.Id, new { @type="number", @class="bookroom", @placeholder="Enter Room Id", @required="required" })
+        <input type="submit" value="Book"/>
+    }
+
+    @if(ViewBag.isAdmin){
+      <h3>Create a schedule for room</h3>
+      @using(Html.BeginForm("RoomSchedule", "Room", FormMethod.Post)){
+        <p>Schedule a Room</p>
+        <input type="number" name="RoomId" placeholder="Room Id"/>
+        <p>Pick Start Time</p>
+        <input type="datetime-local" name="start" placeholder="Date"/>
+        <p>Pick End Time</p>
+        <input type="datetime-local" name="end" placeholder="Time"/>
+        <input type="text" name="action" placeholder="Action"/>
+        <input type="submit" value="Schedule"/>
+      }
+    }
+    else{
+      <p>Not Admin</p>
+    }
+  </body>
+</html>

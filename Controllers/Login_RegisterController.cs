@@ -9,6 +9,7 @@ namespace InfinitySystems.Controllers
     public class Login_RegisterController : Controller
     {
         private readonly IConfiguration _configuration;
+        private const int SessionUserId = -1;
 
         // private readonly ILogin _loginUser;
 
@@ -23,6 +24,8 @@ namespace InfinitySystems.Controllers
         public IActionResult Login_Register()
         {
             Users user = new();
+            HttpContext.Session.SetInt32("SessionUserId", -1);
+            ViewBag.Id = -1;
             return View(user);
         }
 
@@ -53,13 +56,13 @@ namespace InfinitySystems.Controllers
             if (success.Value.ToString().Equals("False"))
             {
                 ViewBag.LoginStatus = 0;
-                return View(user);
+                ViewBag.Id = -1;
+                return RedirectToAction("Login_Register", "Login_Register");
             }
             else
             {
+                HttpContext.Session.SetInt32("SessionUserId", Convert.ToInt32(user_id.Value));
                 ViewBag.LoginStatus = 1;
-
-                int Id = Convert.ToInt32(user_id.Value);
                 return RedirectToAction("HomePage", "HomePage");
             }
         }
@@ -94,12 +97,13 @@ namespace InfinitySystems.Controllers
             if (user_id.Value.ToString().Equals("-1"))
             {
                 ViewBag.SignUpStatus = 0;
+                ViewBag.Id = -1;
                 return RedirectToAction("Login_Register", "Login_Register");
             }
             else
             {
+                HttpContext.Session.SetInt32("SessionUserId", Convert.ToInt32(user_id.Value));
                 ViewBag.SignUpStatus = 1;
-                int Id = Convert.ToInt32(user_id.Value);
                 return RedirectToAction("HomePage", "HomePage");
             }
         }
