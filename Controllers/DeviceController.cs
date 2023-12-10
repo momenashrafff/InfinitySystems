@@ -47,7 +47,7 @@ namespace InfinitySystems.Controllers
             return View(new Device());
         }
 
-     [HttpPost]
+        [HttpPost]
         public IActionResult DeviceCharge(Device device)
         {
             int? userId = HttpContext.Session.GetInt32("SessionUserId");
@@ -104,63 +104,89 @@ namespace InfinitySystems.Controllers
 
 
         [HttpPost]
-        public IActionResult AddDevice(Device device)
+        public IActionResult OutOfBattery(Device device)
         {
             try
             {
-                SqlParameter device_idParam = new SqlParameter("@device_id", device.Id);
-                SqlParameter statusParam = new SqlParameter("@status", device.Status);
-                SqlParameter batteryParam = new SqlParameter("@battery", device.Battery_Status);
-                SqlParameter locationParam = new SqlParameter("@location", device.Room);
-                SqlParameter typeParam = new SqlParameter("@type", device.Type);
+                using (var command = _context.Database.GetDbConnection().CreateCommand())
+                {
+                    command.CommandText = "OutOfBattery";
+                    command.CommandType = CommandType.StoredProcedure;
 
-                _context.Database.ExecuteSqlRaw("EXEC AddDevice @device_id, @status, @battery, @location, @type",
-                                                device_idParam, statusParam, batteryParam, locationParam, typeParam);
-                TempData["AddMessage"] = "Device added successfully.";
+                    _context.Database.OpenConnection();
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        var outOfBatteryRooms = reader.Cast<IDataRecord>()
+                                                        .Select(r => r.GetInt32(0))
+                                                        .ToList();
+
+                        TempData["OutOfBatteryRooms"] = outOfBatteryRooms;
+                        TempData.Keep("OutOfBatteryRooms");
+
+                    }
+                }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                TempData["AddError"] = "Device could not be added.";
+                // Log the exception or handle it as needed
+                Console.WriteLine($"Error in OutOfBattery action: {ex.Message}");
+                TempData["OutOfBatteryRooms"] = new List<int>();
+            }
+
+            return RedirectToAction("Index", "Device", new { OutOfBatteryRooms = ViewBag.OutOfBatteryRooms });
+
+        }
+        [HttpPost]
+        public IActionResult Charging()
+        {
+            try
+            {
+                _context.Database.ExecuteSqlRaw("EXEC Charging");
+                TempData["ChargingMessage"] = "Charging procedure executed successfully!";
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error executing Charging procedure: {ex.Message}");
+                TempData["ChargingError"] = "Error executing Charging procedure.";
             }
 
             return RedirectToAction("Index", "Device");
         }
+        
         [HttpPost]
-public IActionResult OutOfBattery(Device device)
-{
-    try
-    {
-        using (var command = _context.Database.GetDbConnection().CreateCommand())
+        public IActionResult NeedCharge()
         {
-            command.CommandText = "OutOfBattery";
-            command.CommandType = CommandType.StoredProcedure;
-
-            _context.Database.OpenConnection();
-
-            using (var reader = command.ExecuteReader())
+            try
             {
-                var outOfBatteryRooms = new List<int>();
-
-                while (reader.Read())
+                using (var command = _context.Database.GetDbConnection().CreateCommand())
                 {
-                    outOfBatteryRooms.Add(reader.GetInt32(0));
+                    command.CommandText = "NeedCharge";
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    _context.Database.OpenConnection();
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        var devicesNeedCharge = reader.Cast<IDataRecord>()
+                                                        .Select(r => r.GetInt32(0))
+                                                        .ToList();
+
+                        TempData["DevicesNeedCharge"] = devicesNeedCharge;
+                        TempData.Keep("DevicesNeedCharge");
+                    }
                 }
 
-                TempData["OutOfBatteryRooms"] = outOfBatteryRooms;
-
-                Console.WriteLine(TempData["OutOfBatteryRooms"]);
+                TempData["NeedChargeMessage"] = "NeedCharge procedure executed successfully!";
             }
-        }
-    }
-    catch (Exception ex)
-    {
-        // Log the exception or handle it as needed
-        Console.WriteLine($"Error in OutOfBattery action: {ex.Message}");
-        TempData["OutOfBatteryRooms"] = new List<int>();
-    }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error executing NeedCharge procedure: {ex.Message}");
+                TempData["NeedChargeError"] = "Error executing NeedCharge procedure.";
+            }
 
-    return RedirectToAction("Index", "Device");
-}
+            return RedirectToAction("Index", "Device");
+        }
 
     }   
 }
