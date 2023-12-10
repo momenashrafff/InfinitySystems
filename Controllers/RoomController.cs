@@ -27,19 +27,20 @@ namespace InfinitySystems.Controllers
                 return RedirectToAction("Login_Register", "Login_Register");
             }
             ViewBag.Rooms = _context.Rooms.FromSqlRaw($"ViewMyRoom {Id.Value}").ToList();
-            ViewBag.isAdmin = _context.Admins.FromSqlRaw($"SELECT * FROM Admin WHERE Admin.admin_id = {Id}").ToList().IsNullOrEmpty() ? false : true;
+            ViewBag.NotUsedRooms = _context.Rooms.FromSqlRaw($"ViewRoom").ToList();
+            ViewBag.isAdmin = HttpContext.Session.GetString("SessionUserType") == "Admin";
             return View(room);
         }
 
         /*
         Signed-in User
-            a) View the assigned room of a user.(Done)
+            a) View the assigned room of a user. (Done)
             b) Book a room. (Done)
         
         Signed-in Admin
-            a) Create schedule for a room. 
-            b) Change status of room.
-            c) View rooms that are not being used.
+            a) Create schedule for a room. (Done)
+            b) Change status of room. (Done)
+            c) View rooms that are not being used. 
         */
 
         [HttpPost]
@@ -85,6 +86,27 @@ namespace InfinitySystems.Controllers
                 }
             }
             TempData["Not Schedule"] = "Schedule Not Created";
+            return RedirectToAction("Index", "Room");
+        }
+
+        public IActionResult RoomStatus(int RoomId, string status)
+        {
+            IEnumerable<Room> rooms = _context.Rooms.FromSqlRaw($"SELECT * FROM Room WHERE Id = {RoomId}").ToList();
+            int? Id = HttpContext.Session.GetInt32("SessionUserId");
+            if (Id == null || Id.Value == -1)
+            {
+                return RedirectToAction("Login_Register", "Login_Register");
+            }
+            if (!rooms.IsNullOrEmpty())
+            {
+                int res = _context.Database.ExecuteSqlInterpolated($"RoomAvailability @location={RoomId}, @status={status}");
+                if (res > 0)
+                {
+                    TempData["Status"] = "Room Status Changed Successfully";
+                    return RedirectToAction("Index", "Room");
+                }
+            }
+            TempData["Not Status"] = "Room Status Not Changed";
             return RedirectToAction("Index", "Room");
         }
 

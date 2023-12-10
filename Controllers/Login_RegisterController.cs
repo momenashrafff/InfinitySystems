@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using Microsoft.Data.SqlClient;
 using System.Data;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 namespace InfinitySystems.Controllers
 {
@@ -10,13 +12,15 @@ namespace InfinitySystems.Controllers
     {
         private readonly IConfiguration _configuration;
         private const int SessionUserId = -1;
+        private const string SessionUserType = "";
+        private readonly HomesyncContext _context;
 
         // private readonly ILogin _loginUser;
 
-        public Login_RegisterController(IConfiguration configuration)
+        public Login_RegisterController(IConfiguration configuration, HomesyncContext context)
         {
             _configuration = configuration;
-
+            _context = context;
             // _loginUser = loguser;
         }
         [HttpGet]
@@ -25,6 +29,7 @@ namespace InfinitySystems.Controllers
         {
             Users user = new();
             HttpContext.Session.SetInt32("SessionUserId", -1);
+            HttpContext.Session.SetString("SessionUserType", "");
             ViewBag.Id = -1;
             return View(user);
         }
@@ -62,6 +67,9 @@ namespace InfinitySystems.Controllers
             else
             {
                 HttpContext.Session.SetInt32("SessionUserId", Convert.ToInt32(user_id.Value));
+                int Id = Convert.ToInt32(user_id.Value);
+                bool isAdmin = _context.Admins.FromSqlRaw($"SELECT * FROM Admin WHERE Admin.admin_id = {Id}").ToList().IsNullOrEmpty() ? false : true;
+                HttpContext.Session.SetString("SessionUserType", isAdmin ? "Admin" : "Guest");
                 ViewBag.LoginStatus = 1;
                 return RedirectToAction("HomePage", "HomePage");
             }

@@ -6,6 +6,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/css/Room.css" />
     <title>Rooms</title>
   </head>
   <body>
@@ -15,36 +16,48 @@
     <h2>Your Room</h2>
     
     @foreach(var room in ViewBag.Rooms){
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">@room.Id</h5>
-                <h6 class="card-subtitle mb-2 text-muted">@room.Type</h6>
-                <p class="card-text">@room.Status</p>
-            </div>
+      <div class="Card">
+        <div class="innerCard">
+          <div class="frontSide">
+            <p class="title">Room no. @room.Id</p>
+            <h4>@room.Type</h4>
+            <h5>Floor: @room.Floor</h5>
+          </div>
         </div>
+      </div>
     }
+    <br/>
 
     @using(Html.BeginForm("RoomBook", "Room", FormMethod.Post)){
-        if(TempData["Book"] != null){
-            <div class="alert alert-success" role="alert">
-            @TempData["Book"]
+      if(TempData["Book"] != null){
+        <div class="alert alert-success" role="alert">
+          @TempData["Book"]
+        </div>
+      }
+      if(TempData["Not Book"] != null){
+        <div class="alert alert-danger" role="alert">
+          @TempData["Not Book"]
+        </div> 
+      } 
+      <h3>Book A Room</h3>
+      @Html.TextBoxFor(m => m.Id, new { @type="number", @class="bookroom", @placeholder="Enter Room Id", @required="required" })
+      <input type="submit" value="Book"/>
+    }
+    <br/>
+    
+    @if(ViewBag.isAdmin){
+      @using(Html.BeginForm("RoomSchedule", "Room", FormMethod.Post)){
+      <h3>Create a schedule for room</h3>
+      @if(TempData["Schedule"] != null){
+          <div class="alert alert-success" role="alert">
+            @TempData["Schedule"]
           </div>
         }
-        if(TempData["Not Book"] != null){
+        if(TempData["Not Schedule"] != null){
           <div class="alert alert-danger" role="alert">
-            @TempData["Not Book"]
+            @TempData["Not Schedule"]
           </div> 
         }
-        
-       
-        <p>Book A Room</p>
-        @Html.TextBoxFor(m => m.Id, new { @type="number", @class="bookroom", @placeholder="Enter Room Id", @required="required" })
-        <input type="submit" value="Book"/>
-    }
-
-    @if(ViewBag.isAdmin){
-      <h3>Create a schedule for room</h3>
-      @using(Html.BeginForm("RoomSchedule", "Room", FormMethod.Post)){
         <p>Schedule a Room</p>
         <input type="number" name="RoomId" placeholder="Room Id"/>
         <p>Pick Start Time</p>
@@ -54,9 +67,42 @@
         <input type="text" name="action" placeholder="Action"/>
         <input type="submit" value="Schedule"/>
       }
+      
+      <br/>
+      @using(Html.BeginForm("RoomStatus", "Room", FormMethod.Post)){
+      <h3>Change status of a room</h3>
+        @if(TempData["Status"] != null){
+          <div class="alert alert-success" role="alert">
+            @TempData["Status"]
+          </div>
+        }
+        if(TempData["Not Status"] != null){
+          <div class="alert alert-danger" role="alert">
+            @TempData["Not Status"]
+          </div> 
+        }
+        <p>Choose Room</p>
+        <input type="number" name="RoomId" placeholder="Room Id"/>
+        <input type="text" name="status" placeholder="Status"/>
+        <input type="submit" value="Change"/>
+      }
+      <br/>
+      <h3>Not Used Rooms</h3>
+      @foreach(var room in ViewBag.NotUsedRooms){
+        <div class="myCard">
+          <div class="innerCard">
+            <div class="frontSide">
+              <p class="title">Room no. @room.Id</p>
+            </div>
+            <div class="backSide">
+              <p class="title">Room no. @room.Id</p>
+              <h4>@room.Type</h4>
+              <h5>Floor: @room.Floor</h5>
+            </div>
+          </div>
+        </div>
+      }
     }
-    else{
-      <p>Not Admin</p>
-    }
+    <script src="~/js/tailwind.config.js"></script>
   </body>
 </html>
