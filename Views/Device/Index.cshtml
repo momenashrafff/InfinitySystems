@@ -1,0 +1,128 @@
+@using Microsoft.AspNetCore.Mvc.Rendering;
+@using InfinitySystems.Models;
+@model InfinitySystems.Models.Device
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Devices</title>
+</head>
+<body>
+    @if (ViewBag.isAdmin != null)
+    {
+        <div>Is Admin: @ViewBag.isAdmin</div>
+    }
+    <!-- Display table of devices -->
+    @if (ViewBag.Devices != null && ViewBag.Devices.Count > 0)
+    {
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var device in ViewBag.Devices)
+                {
+                    <tr>
+                        <td>@device.Id</td>
+                        <td>@device.Type</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+    <!-- Display add device functionality for admin users -->
+
+    @if (ViewBag.isAdmin != null && ViewBag.isAdmin)
+    {
+        @using (Html.BeginForm("AddDevice", "Device", FormMethod.Post))
+        {
+            <div>
+                <label for="deviceId">Device ID:</label>
+                <input type="number" id="deviceId" name="Id" required />
+            </div>
+            <div>
+                <label for="deviceStatus">Device Status:</label>
+                <input type="text" id="deviceStatus" name="Status" required />
+            </div>
+            <div>
+                <label for="deviceBattery">Device Battery:</label>
+                <input type="number" id="deviceBattery" name="Battery_Status" required />
+            </div>
+            <div>
+                <label for="deviceLocation">Device Location:</label>
+                <input type="number" id="deviceLocation" name="Room" required />
+            </div>
+            <div>
+                <label for="deviceType">Device Type:</label>
+                <input type="text" id="deviceType" name="Type" required />
+            </div>
+            <div>
+                <button type="submit">Add Device</button>
+            </div>
+        }
+        @if (TempData["AddError"] != null)
+        {
+            <div class="alert alert-danger" role="alert">
+                @TempData["AddError"]
+            </div>
+        }
+        @if (TempData["AddMessage"] != null)
+        {
+            <div class="alert alert-success" role="alert">
+                @TempData["AddMessage"]
+            </div>
+        }
+
+        <h2>Devices with Low Battery</h2>
+
+        @using (Html.BeginForm("OutOfBattery", "Device", FormMethod.Post))
+        {
+            <button type="submit">Check Devices with Low Battery</button>
+        }
+
+        @if (TempData["OutOfBatteryRooms"] is List<int> outOfBatteryRooms && outOfBatteryRooms.Any())
+        {
+            <ul>
+                @foreach (var room in outOfBatteryRooms)
+                {
+                    <li>Room: @room</li>
+                }
+            </ul>
+        }
+        else
+        {
+            <p>No devices with low battery.</p>
+        }
+
+    }
+
+    @using (Html.BeginForm("DeviceCharge", "Device", FormMethod.Post))
+    {
+        <div>
+            <label for="chargeDeviceId">Enter Device ID:</label>
+            <input type="number" id="chargeDeviceId" name="Id" required />
+            <button type="submit">Get Device Charge</button>
+        </div>
+
+       @if (TempData["ChargeId"] != null && TempData["Location"] != null)
+        {
+            <div class="alert alert-success" role="alert">
+                Charge ID: @TempData["ChargeId"], Location: @TempData["Location"]
+            </div>
+        }
+
+        @if (TempData["ChargeError"] != null)
+        {
+            <div class="alert alert-danger" role="alert">
+                @TempData["ChargeError"]
+            </div>
+        }
+    }
+
+</body>
+</html>
