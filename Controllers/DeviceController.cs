@@ -46,7 +46,30 @@ namespace InfinitySystems.Controllers
             ViewBag.isAdmin = isAdmin;
             return View(new Device());
         }
+        [HttpPost]
+        public IActionResult AddDevice(Device device)
+        {
+            try
+            {
+                SqlParameter deviceIdParam = new SqlParameter("@device_id", device.Id);
+                SqlParameter statusParam = new SqlParameter("@status", device.Status);
+                SqlParameter batteryParam = new SqlParameter("@battery", device.Battery_Status);
+                SqlParameter locationParam = new SqlParameter("@location", device.Room);
+                SqlParameter typeParam = new SqlParameter("@type", device.Type);
 
+                _context.Database.ExecuteSqlRaw("EXEC AddDevice @device_id, @status, @battery, @location, @type",
+                                                deviceIdParam, statusParam, batteryParam, locationParam, typeParam);
+
+                TempData["AddDeviceMessage"] = "Device added successfully!";
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error adding device: {ex.Message}");
+                TempData["AddDeviceError"] = "Error adding device.";
+            }
+
+            return RedirectToAction("Index", "Device");
+        }
         [HttpPost]
         public IActionResult DeviceCharge(Device device)
         {

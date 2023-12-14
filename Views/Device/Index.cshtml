@@ -120,16 +120,16 @@
                             <button type="submit">Add Device</button>
                         </div>
                     }
-                    @if (TempData["AddError"] != null)
+                    @if (TempData["AddDeviceError"] != null)
                     {
                         <div class="alert alert-danger" role="alert">
-                            @TempData["AddError"]
+                            @TempData["AddDeviceError"]
                         </div>
                     }
-                    @if (TempData["AddMessage"] != null)
+                    @if (TempData["AddDeviceMessage"] != null)
                     {
                         <div class="alert alert-success" role="alert">
-                            @TempData["AddMessage"]
+                            @TempData["AddDeviceMessage"]
                         </div>
                     }
                 </div>
