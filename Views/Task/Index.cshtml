@@ -1,0 +1,115 @@
+<h1>My Tasks</h1>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Creation Date</th>
+        <th>Due Date</th>
+        <th>Category</th>
+        <th>Creator</th>
+        <th>Status</th>
+        <th>Reminder Date</th>
+        <th>Priority</th>
+    </tr>
+    @foreach (var task in Model)
+    {
+    <tr>
+        <td>@task.Id</td>
+        <td>@task.Name</td>
+        <td>@task.Creation_Date.ToShortDateString()</td>
+        <td>@task.Due_Date.ToShortDateString()</td>
+        <td>@task.Category</td>
+        <td>@task.Creator</td>
+        <td>@task.Status</td>
+        <td>@task.Reminder_Date.ToShortDateString()</td>
+        <td>@task.Priority</td>
+    </tr>
+    }
+</table>
+<h1>Add a New Task</h1>
+<form method="post" action="/Task/AddTask">
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="@Model.Name" required />
+        @Html.ValidationMessageFor(model => model.Name)
+    </div>
+    <div>
+        <label for="creation_date">Creation Date:</label>
+        <input type="date" id="creation_date" name="creation_date" value="@Model.Creation_Date" required />
+        @Html.ValidationMessageFor(model => model.Creation_Date)
+    </div>
+    <div>
+        <label for="due_date">Due Date:</label>
+        <input type="date" id="due_date" name="due_date" value="@Model.Due_Date" required />
+        @Html.ValidationMessageFor(model => model.Due_Date)
+    </div>
+    <div>
+        <label for="category">Category:</label>
+        <input type="text" id="category" name="category" value="@Model.Category" required />
+        @Html.ValidationMessageFor(model => model.Category)
+    </div>
+    <div>
+        <label for="creator">Creator:</label>
+        <input type="number" id="creator" name="creator" value="@Model.Creator" required />
+        @Html.ValidationMessageFor(model => model.Creator)
+    </div>
+    <div>
+        <label for="status">Status:</label>
+        <input type="text" id="status" name="status" value="@Model.Status" required />
+        @Html.ValidationMessageFor(model => model.Status)
+    </div>
+    <div>
+        <label for="reminder_date">Reminder Date:</label>
+        <input type="date" id="reminder_date" name="reminder_date" value="@Model.Reminder_Date" required />
+        @Html.ValidationMessageFor(model => model.Reminder_Date)
+    </div>
+    <div>
+        <label for="priority">Priority:</label>
+        <input type="number" id="priority" name="priority" value="@Model.Priority" required />
+        @Html.ValidationMessageFor(model => model.Priority)
+    </div>
+    <div>
+        <input type="hidden" name="user_id" value="@ViewBag.user_id" /> <!-- Use the user id as a hidden input -->
+    </div>
+    <div>
+        <input type="submit" value="Save" />
+    </div>
+</form>
+<h1>Delete Task</h1>
+<p>Are you sure you want to delete this task?</p>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Creation Date</th>
+        <th>Due Date</th>
+        <th>Category</th>
+        <th>Creator</th>
+        <th>Status</th>
+        <th>Reminder Date</th>
+        <th>Priority</th>
+    </tr>
+    <tr>
+        <td>@Model.Id</td>
+        <td>@Model.Name</td>
+        <td>@Model.Creation_Date.ToShortDateString()</td>
+        <td>@Model.Due_Date.ToShortDateString()</td>
+        <td>@Model.Category</td>
+        <td>@Model.Creator</td>
+        <td>@Model.Status</td>
+        <td>@Model.Reminder_Date.ToShortDateString()</td>
+        <td>@Model.Priority</td>
+    </tr>
+</table>
+<form method="post" action="/Task/DeleteTask">
+    <div>
+        <input type="hidden" name="id" value="@Model.Id" />
+    </div>
+    <div>
+        <input type="hidden" name="user_id" value="@ViewBag.user_id" /> <!-- Use the user id as a hidden input -->
+    </div>
+    <div>
+        <input type="submit" value="Delete" />
+    </div>
+</form>
+

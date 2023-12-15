@@ -75,8 +75,8 @@ header {
 }
 
 .nav__links li.nav__right {
-    margin-left: 300%;
-    order: 1; /* Change order to 1 to move it to the right */
+    margin-left: 100%;
+    order: 2; /* Change order to 1 to move it to the right */
 }
 
 

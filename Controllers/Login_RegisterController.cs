@@ -71,7 +71,7 @@ namespace InfinitySystems.Controllers
                 bool isAdmin = _context.Admins.FromSqlRaw($"SELECT * FROM Admin WHERE Admin.admin_id = {Id}").ToList().IsNullOrEmpty() ? false : true;
                 HttpContext.Session.SetString("SessionUserType", isAdmin ? "Admin" : "Guest");
                 ViewBag.LoginStatus = 1;
-                return RedirectToAction("HomePage", "HomePage");
+                return RedirectToAction("Index", "HomePage");
             }
         }
 
@@ -112,7 +112,7 @@ namespace InfinitySystems.Controllers
             {
                 HttpContext.Session.SetInt32("SessionUserId", Convert.ToInt32(user_id.Value));
                 ViewBag.SignUpStatus = 1;
-                return RedirectToAction("HomePage", "HomePage");
+                return RedirectToAction("Index", "HomePage");
             }
         }
 

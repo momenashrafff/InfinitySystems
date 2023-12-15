@@ -13,7 +13,7 @@ namespace InfinitySystems.Controllers
             _logger = logger;
         }
 
-        public IActionResult HomePage()
+        public IActionResult Index()
         {
             int? Id = HttpContext.Session.GetInt32("SessionUserId");
             if (Id == null || Id.Value == -1)

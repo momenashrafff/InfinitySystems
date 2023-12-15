@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="~/css/Device.css" />
-    <script src="~/js/site.js">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <title>Devices</title>
 </head>
@@ -16,8 +15,12 @@
         <nav>
             <ul class="nav__links">
                 <li class="nav__left"><a href="~/Device/Index">Devices</a></li>
-                <li><a href="~/HomePage/HomePage">Home</a></li>
+                <li><a href="~/HomePage/Index">Home</a></li>
                 <li><a href="~/Room/Index">Rooms</a></li>
+                <li><a href="~/Event/Index">Events</a></li>
+                <li><a href="~/Task/Index">Tasks</a></li>
+                <li><a href="~/Comms/Index">Comms</a></li>
+                <li><a href="~/Finance/Index">Finance</a></li>
                 <li class="nav__right"><a href="~/Home/Logout">Logout</a></li>
             </ul>
         </nav>
@@ -26,7 +29,7 @@
         <h1 class="title">Devices</h1>
         <div class="cards-container"> <!-- Add a container for the cards -->
             @foreach(var device in ViewBag.Devices) {
-                <div class="myCard" onmouseover="executeDeviceCharge('@device.Id')">
+                <div class="myCard" onmouseover="executeDeviceChargeWithDelay('@device.Id')">
                     <div class="innerCard">
                         <div class="frontSide">
                             <p class="card-title">ID: @device.Id</p>
@@ -37,9 +40,8 @@
                             @using (Html.BeginForm("DeviceCharge", "Device", FormMethod.Post)) {
                                 <input type="hidden" name="Id" value="@device.Id" />
                                 <button type="submit" style="display: none;"></button>
-                                <div class="chargeIdElement" id="chargeIdElement_@device.Id">
-                                    <h5>Device Battery: @TempData["ChargeId"]</h5>
-                                </div>
+                                <div class="chargeIdElement" id="chargeIdElement_@device.Id"></div>
+                                 <p class="card-info device-status">Status: @device.Status</p>
                             }
                         </div>
                     </div>
@@ -170,7 +172,6 @@
          } 
 
     </div>
-    <script src="~/js/tailwind.config.js"></script>
     <script>
         // Wrap your JavaScript code in a window.onload event
         window.onload = function () {
