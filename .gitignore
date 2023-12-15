@@ -72,4 +72,4 @@ appsettings.Development.json
 .vs/
 
 # Ignore specific file
-models/HomesyncContext.cs
+Models/HomesyncContext.cs
