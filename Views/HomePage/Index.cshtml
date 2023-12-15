@@ -1,4 +1,4 @@
-﻿@using Microsoft.AspNetCore.Mvc.Rendering;
+﻿@* @using Microsoft.AspNetCore.Mvc.Rendering;
 @model InfinitySystems.Models.Users
 @{
     ViewData["Title"] = "Home";
@@ -35,4 +35,33 @@
         <input type="image" src="~/images/Finance.png" alt="Finance" style="width: 100%; cursor: pointer; transition: transform 0.5s;" onmouseover="this.style.transform='scale(1.05)';" onmouseout="this.style.transform='scale(1)';">
         </form>
     </div>
+</body> *@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Home</title>
+    <link rel="stylesheet" href="~/css/Device.css" />
+</head>
+<body>
+    <div id="particles-js"></div>
+    <script type="text/javascript" src="~/js/particles.js"></script>
+    <script type="text/javascript" src="~/js/app.js"></script>
+    <header>
+        <nav>
+            <ul class="nav__links">
+                <li class="nav__left"><a href="~/HomePage/Index">Home</a></li>
+                <li><a href="~/Device/Index">Devices</a></li>
+                <li><a href="~/Room/Index">Rooms</a></li>
+                <li><a href="~/Event/Index">Events</a></li>
+                <li><a href="~/Task/Index">Tasks</a></li>
+                <li><a href="~/Comms/Index">Comms</a></li>
+                <li><a href="~/Finance/Index">Finance</a></li>
+                <li class="nav__right"><a href="~/Home/Logout">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
 </body>
+</html>
+```
