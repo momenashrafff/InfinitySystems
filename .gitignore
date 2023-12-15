@@ -70,3 +70,6 @@ appsettings.Development.json
 
 # Ignore Visual Studio folder
 .vs/
+
+# Ignore specific file
+Models/HomesyncContext.cs
