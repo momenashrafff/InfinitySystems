@@ -48,6 +48,6 @@ app.UseSession();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Login_Register}/{action=Login_Register}/{id?}");
+    pattern: "{controller=MainPage}/{action=MainPage}/{id?}");
 
 app.Run();

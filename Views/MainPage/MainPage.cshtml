@@ -1,0 +1,194 @@
+﻿@{
+    ViewData["Title"] = "MainPage";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Home</title>
+    <link rel="stylesheet" href="~/css/MainPage.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+
+<body>
+    <div id="particles-js"></div>
+    <script type="text/javascript" src="~/js/particles.js"></script>
+    <script type="text/javascript" src="~/js/app.js"></script>
+    <div>
+        <link href="~/css/MainPage.css" rel="stylesheet" />
+        <div class="home-container">
+            <div class="home-header">
+                <header data-thq="thq-navbar" class="home-navbar-interactive">
+                    <span class="home-logo">COMPANY</span>
+                    <div data-thq="thq-navbar-nav" class="home-desktop-menu">
+                        <nav class="home-links">
+                            <a href="#team-section" class="home-nav1">
+                                <span>Team</span>
+                                <br />
+                            </a>
+                            <a href="#connect-section" class="home-nav2">
+                                <span>Connect</span>
+                                <br />
+                            </a>
+                        </nav>
+                        <a asp-controller="MainPage" asp-action="Login_Register" class="home-register button">
+                            Login / Register
+                        </a>
+                    </div>
+                </header>
+            </div>
+            <div class="home-main">
+                <div class="home-details">
+                    <img alt="image"
+                         src="~/images/Logo.png"
+                         class="home-details-image" />
+                    <div class="home-container01">
+                        <h2 class="home-details-heading heading2">Infinity-Systems</h2>
+                        <span class="home-details-sub-heading">
+                            Experience the difference with our advanced optimization techniques.
+                            Increase loading speed, improve user experience, and boost search
+                            engine rankings.
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="home-team">
+                <div class="home-features-container">
+                    <div class="home-features">
+                        <div class="home-container02" id="team-section">
+                            <span class="home-text04 sectionTitle">
+                                <span>Team 5</span>
+                                <br />
+                            </span>
+                            <h2 class="home-features-heading heading2">Team Members</h2>
+                            <span class="home-features-sub-heading">
+                                <span>All The Team Members Who Worked on The WebSite!</span>
+                                <br />
+                            </span>
+                            <div class="home-container03">
+                                <div class="home-container04">
+                                    <img alt="image"
+                                         src="~/images/Negm.png" class="home-details-image1" />
+                                    <span class="home-text16">
+                                        <span>Ahmed Essam</span>
+                                        <br />
+                                        <span>T-04</span>
+                                        <br />
+                                        <span>ID : 10005389</span>
+                                        <br />
+                                    </span>
+                                </div>
+                                <div class="home-container04">
+                                    <img alt="image"
+                                         src="~/images/Omar.png" class="home-details-image1" />
+                                    <span class="home-text16">
+                                        <span>Omar Abdelmoteleb</span>
+                                        <br />
+                                        <span>T-10</span>
+                                        <br />
+                                        <span>ID : 10002485</span>
+                                        <br />
+                                    </span>
+                                </div>
+                                <div class="home-container04">
+                                    <img alt="image"
+                                         src="~/images/Mohamed.png" class="home-details-image1" />
+                                    <span class="home-text16">
+                                        <span>Mohammad Moharram</span>
+                                        <br />
+                                        <span>T-05</span>
+                                        <br />
+                                        <span>ID : 10002104</span>
+                                        <br />
+                                    </span>
+                                </div>
+                                <div class="home-container04">
+                                    <img alt="image"
+                                         src="~/images/Nagar.png" class="home-details-image1" />
+                                    <span class="home-text16">
+                                        <span>Abdelrahman Elnagar</span>
+                                        <br />
+                                        <span>T-12</span>
+                                        <br />
+                                        <span>ID : 10006921</span>
+                                        <br />
+                                    </span>
+                                </div>
+                                <div class="home-container04">
+                                    <img alt="image"
+                                         src="~/images/momen.png" class="home-details-image1" />
+                                    <span class="home-text16">
+                                        <span>Momen Ashraf</span>
+                                        <br />
+                                        <span>T-06</span>
+                                        <br />
+                                        <span>ID : 10002621</span>
+                                        <br />
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="home-faq" id="connect-section">
+                <div class="home-faq-container">
+                    <div class="home-faq1">
+                        <div class="home-container09">
+                            <span class="home-text44 sectionTitle">
+                                <span>Connect</span>
+                                <br />
+                            </span>
+                            <h2 class="home-text47 heading2">
+                                <span>Project / Files</span>
+                                <br />
+                            </h2>
+                            <span class="home-text50">
+                                <span>Here you can see how and where you can access</span>
+                                <br />
+                                <span>the project files for Referencing and Source</span>
+                                <br />
+                            </span>
+                        </div>
+                        <div class="home-container10">
+                            <div class="question-container">
+                                <span class="question-text heading4">
+                                    <span>How Can I Contact The Creators Of The Website?</span>
+                                </span>
+                                <span class="question-text1">
+                                    <span>Ahmed Essam: ahmed.essam@student.giu-uni.de</span>
+                                </span>
+                                <span class="question-text1">
+                                    <span>Momen Ashraf: momen.elkhouli@student.giu-uni.de</span>
+                                </span>
+                                <span class="question-text1">
+                                    <span>Abdelrahman ElNagar: abdelrahman.elnagar@student.giu-uni.de</span>
+                                </span>
+                                <span class="question-text1">
+                                    <span>Mohammad Moharram: mohammad.moharram@student.giu-uni.de</span>
+                                </span>
+                                <span class="question-text1">
+                                    <span>Omar abdelmoteleb: omar.abdelmoteleb@student.giu-uni.de</span>
+                                </span>
+                            </div>
+                            <div class="question1-container question1-root-class-name">
+                                <span class="question-text heading4">
+                                    <span>Where Can I Check The Project Files And Use it?</span>
+                                </span>
+                                <span class="question-text1">
+                                    <span>You Can Use The Following GitHub Link</span>
+                                </span>
+                                <span class="question-text1"><span>Link :</span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
