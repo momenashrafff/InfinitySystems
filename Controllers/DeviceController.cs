@@ -73,6 +73,7 @@ namespace InfinitySystems.Controllers
         [HttpPost]
         public IActionResult DeviceCharge(Device device)
         {
+            Console.WriteLine($"DeviceCharge action called with device id: {device.Id}");
             int? userId = HttpContext.Session.GetInt32("SessionUserId");
 
             if (userId == null || userId == -1)
@@ -86,8 +87,6 @@ namespace InfinitySystems.Controllers
             ViewBag.Devices = isAdmin ? _context.Devices.FromSqlRaw("SELECT * FROM Device").ToList()
                                     : _context.Devices.FromSqlRaw($"ViewMyDevices {userId.Value}").ToList();
 
-            Console.WriteLine($"IsAdmin: {isAdmin}");
-            Console.WriteLine($"ViewBag.Devices Count: {ViewBag.Devices?.Count}");
 
             SqlParameter deviceIdParam = new SqlParameter("@device_id", device.Id);
             SqlParameter chargeIdParam = new SqlParameter("@charge_id", SqlDbType.Int)
@@ -103,15 +102,18 @@ namespace InfinitySystems.Controllers
             _context.Database.ExecuteSqlRaw("EXEC DeviceCharge @device_id, @charge_id OUTPUT, @location OUTPUT",
                                             deviceIdParam, chargeIdParam, locationParam);
 
-            if (ViewBag.Devices != null && ViewBag.Devices.Count > 0 &&
-                chargeIdParam.Value != DBNull.Value && locationParam.Value != DBNull.Value)
+            // Retrieve charge ID and location
+            int chargeId = chargeIdParam.Value != DBNull.Value ? (int)chargeIdParam.Value : -1;
+            int location = locationParam.Value != DBNull.Value ? (int)locationParam.Value : -1;
+
+            if (ViewBag.Devices != null && ViewBag.Devices.Count > 0 && chargeId != -1 && location != -1)
             {
                 foreach (var deviceInList in ViewBag.Devices)
                 {
-                    if ((int)locationParam.Value == deviceInList.Room)
+                    if (location == deviceInList.Room)
                     {
-                        TempData["ChargeId"] = (int)chargeIdParam.Value;
-                        TempData["Location"] = (int)locationParam.Value;
+                        TempData["ChargeId"] = chargeId.ToString(); // Convert to string
+                        TempData["Location"] = location;
                         break;
                     }
                 }
@@ -122,9 +124,9 @@ namespace InfinitySystems.Controllers
                 TempData["Location"] = null;
             }
 
-            return RedirectToAction("Index", "Device", device);
+            // Return the charge ID as a plain string
+            return Content(TempData["ChargeId"]?.ToString() ?? "");
         }
-
 
         [HttpPost]
         public IActionResult OutOfBattery(Device device)

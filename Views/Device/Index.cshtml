@@ -1,32 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="~/css/Device.css" />
+    <script src="~/js/site.js">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
-    <style>
-        .section-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-        }
-
-        .section-title {
-            cursor: pointer;
-        }
-    </style>
-
     <title>Devices</title>
 </head>
-
 <body>
     <div id="particles-js"></div>
     <script type="text/javascript" src="~/js/particles.js"></script>
     <script type="text/javascript" src="~/js/app.js"></script>
-
     <header>
         <nav>
             <ul class="nav__links">
@@ -37,204 +22,166 @@
             </ul>
         </nav>
     </header>
-
     <div class="content-wrapper">
-        @if (ViewBag.Devices != null && ViewBag.Devices.Count > 0)
-        {
-            <h2 style="color: white;">Devices List</h2>
-            <div>
-                <table class="devices-table">
-                    <thead>
-                        <tr>
-                            <th>Device ID</th>
-                            <th>Device Name</th>
-                            <th>Device Room</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var device in ViewBag.Devices)
-                        {
-                            <tr>
-                                <td>@device.Id</td>
-                                <td>@device.Type</td>
-                                <td>@device.Room</td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
-        }
-        @using (Html.BeginForm("DeviceCharge", "Device", FormMethod.Post))
-        {
-            <section>
-                <h2 class="section-title" style="color: white;">Get Device Charge</h2>
-                <div class="section-content">
-                    <div>
-                        <input type="number" id="chargeDeviceId" name="Id" placeholder="Enter Device ID" required />
-                        <button type="submit">Get Device Charge</button>
-                    </div>
-
-                    @if (TempData["ChargeId"] != null && TempData["Location"] != null)
-                    {
-                        <div class="alert alert-success" role="alert">
-                            Charge ID: @TempData["ChargeId"], Location: @TempData["Location"]
+        <h1 class="title">Devices</h1>
+        <div class="cards-container"> <!-- Add a container for the cards -->
+            @foreach(var device in ViewBag.Devices) {
+                <div class="myCard" onmouseover="executeDeviceCharge('@device.Id')">
+                    <div class="innerCard">
+                        <div class="frontSide">
+                            <p class="card-title">ID: @device.Id</p>
+                            <p class="card-info">Name: @device.Type</p>
+                            <p class="card-info">Room: @device.Room</p>
                         </div>
-                    }
-
-                    @if (TempData["ChargeError"] != null)
-                    {
-                        <div class="alert alert-danger" role="alert">
-                            @TempData["ChargeError"]
-                        </div>
-                    }
-                </div>
-            </section>
-        }
-
-        <!-- Display add device functionality for admin users -->
-
-        @if (ViewBag.isAdmin != null && ViewBag.isAdmin)
-        {
-            <section>
-                <h2 class="section-title" style="color: white;">Add Device</h2>
-                <div class="section-content">
-                    @using (Html.BeginForm("AddDevice", "Device", FormMethod.Post))
-                    {
-                        <div>
-                            <input type="number" id="deviceId" name="Id" placeholder="Device ID" required />
-                        </div>
-                        <div>
-                            <input type="text" id="deviceStatus" name="Status" placeholder="Device Status" required />
-                        </div>
-                        <div>
-                            <input type="number" id="deviceBattery" name="Battery_Status" placeholder="Device Battery"
-                                required />
-                        </div>
-                        <div>
-                            <input type="number" id="deviceLocation" name="Room" placeholder="Device Location" required />
-                        </div>
-                        <div>
-                            <input type="text" id="deviceType" name="Type" placeholder="Device Type" required />
-                        </div>
-                        <div>
-                            <button type="submit">Add Device</button>
-                        </div>
-                    }
-                    @if (TempData["AddDeviceError"] != null)
-                    {
-                        <div class="alert alert-danger" role="alert">
-                            @TempData["AddDeviceError"]
-                        </div>
-                    }
-                    @if (TempData["AddDeviceMessage"] != null)
-                    {
-                        <div class="alert alert-success" role="alert">
-                            @TempData["AddDeviceMessage"]
-                        </div>
-                    }
-                </div>
-            </section>
-
-            <section>
-                <h2 class="section-title" style="color: white;">Devices with Low Battery</h2>
-                <div class="section-content">
-                    @using (Html.BeginForm("OutOfBattery", "Device", FormMethod.Post))
-                    {
-                        <button type="submit">Check Devices with Low Battery</button>
-                    }
-
-                    @if (TempData["OutOfBatteryRooms"] != null)
-                    {
-                        <p>There are devices with low battery.</p>
-
-                        <ul>
-                            @foreach (var room in (int[])TempData["OutOfBatteryRooms"])
-                            {
-                                <li>Room: @room</li>
+                        <div class="backSide">
+                            @using (Html.BeginForm("DeviceCharge", "Device", FormMethod.Post)) {
+                                <input type="hidden" name="Id" value="@device.Id" />
+                                <button type="submit" style="display: none;"></button>
+                                <div class="chargeIdElement" id="chargeIdElement_@device.Id">
+                                    <h5>Device Battery: @TempData["ChargeId"]</h5>
+                                </div>
                             }
-                        </ul>
-                    }
-                    else
-                    {
-                        <p>No devices with low battery.</p>
-                    }
+                        </div>
+                    </div>
                 </div>
-            </section>
-
-            <section>
-                <h2 class="section-title" style="color: white;">Charging Procedure</h2>
-                <div class="section-content">
-                    @using (Html.BeginForm("Charging", "Device", FormMethod.Post))
-                    {
-                        <button type="submit">Run Charging Procedure</button>
-                        @if (TempData["ChargingMessage"] != null)
-                        {
-                            <div class="alert alert-success" role="alert">
-                                @TempData["ChargingMessage"]
-                            </div>
-                        }
-
-                        @if (TempData["ChargingError"] != null)
-                        {
-                            <div class="alert alert-danger" role="alert">
-                                @TempData["ChargingError"]
-                            </div>
-                        }
-                    }
-                </div>
-            </section>
-
-            <section>
-                <h2 class="section-title" style="color: white;">Devices Needing Charge</h2>
-                <div class="section-content">
-                    @using (Html.BeginForm("NeedCharge", "Device", FormMethod.Post))
-                    {
-                        <button type="submit">Check Devices Needing Charge</button>
-                        @if (TempData["NeedChargeMessage"] != null)
-                        {
-                            <div class="alert alert-success" role="alert">
-                                @TempData["NeedChargeMessage"]
-                            </div>
-                        }
-
-                        @if (TempData["NeedChargeError"] != null)
-                        {
-                            <div class="alert alert-danger" role="alert">
-                                @TempData["NeedChargeError"]
-                            </div>
-                        }
-
-                        @if (TempData["DevicesNeedCharge"] != null)
-                        {
-                            <h3 style="color: white;">Rooms that Need Charging</h3>
-                            <ul>
-                                @foreach (var room in (int[])TempData["DevicesNeedCharge"])
-                                {
-                                    <li>Room: @room</li>
-                                }
-                            </ul>
-                        }
-                        else
-                        {
-                            <p>No rooms need charging.</p>
-                        }
-                    }
-                </div>
-            </section>
-        }
+            }
+        </div>
+          <!-- Display add device functionality for admin users -->
+         @if (ViewBag.isAdmin != null && ViewBag.isAdmin)
+         {
+         <section>
+            <h2 class="section-title" style="color: white;">Add Device</h2>
+            <div class="section-content">
+               @using (Html.BeginForm("AddDevice", "Device", FormMethod.Post))
+               {
+               <div>
+                  <input type="number" id="deviceId" name="Id" placeholder="Device ID" required />
+               </div>
+               <div>
+                  <input type="text" id="deviceStatus" name="Status" placeholder="Device Status" required />
+               </div>
+               <div>
+                  <input type="number" id="deviceBattery" name="Battery_Status" placeholder="Device Battery"
+                     required />
+               </div>
+               <div>
+                  <input type="number" id="deviceLocation" name="Room" placeholder="Device Location" required />
+               </div>
+               <div>
+                  <input type="text" id="deviceType" name="Type" placeholder="Device Type" required />
+               </div>
+               <div>
+                  <button type="submit">Add Device</button>
+               </div>
+               }
+               @if (TempData["AddDeviceError"] != null)
+               {
+               <div class="alert alert-danger" role="alert">
+                  @TempData["AddDeviceError"]
+               </div>
+               }
+               @if (TempData["AddDeviceMessage"] != null)
+               {
+               <div class="alert alert-success" role="alert">
+                  @TempData["AddDeviceMessage"]
+               </div>
+               }
+            </div>
+         </section>
+         <section>
+            <h2 class="section-title" style="color: white;">Devices with Low Battery</h2>
+            <div class="section-content">
+               @using (Html.BeginForm("OutOfBattery", "Device", FormMethod.Post))
+               {
+               <button type="submit">Check Devices with Low Battery</button>
+               }
+               @if (TempData["OutOfBatteryRooms"] != null)
+               {
+               <p>There are devices with low battery.</p>
+               <ul>
+                  @foreach (var room in (int[])TempData["OutOfBatteryRooms"])
+                  {
+                  <li>Room: @room</li>
+                  }
+               </ul>
+               }
+               else
+               {
+               <p>No devices with low battery.</p>
+               }
+            </div>
+         </section>
+         <section>
+            <h2 class="section-title" style="color: white;">Charging Procedure</h2>
+            <div class="section-content">
+               @using (Html.BeginForm("Charging", "Device", FormMethod.Post))
+               {
+               <button type="submit">Run Charging Procedure</button>
+               @if (TempData["ChargingMessage"] != null)
+               {
+               <div class="alert alert-success" role="alert">
+                  @TempData["ChargingMessage"]
+               </div>
+               }
+               @if (TempData["ChargingError"] != null)
+               {
+               <div class="alert alert-danger" role="alert">
+                  @TempData["ChargingError"]
+               </div>
+               }
+               }
+            </div>
+         </section>
+         <section>
+            <h2 class="section-title" style="color: white;">Devices Needing Charge</h2>
+            <div class="section-content">
+               @using (Html.BeginForm("NeedCharge", "Device", FormMethod.Post))
+               {
+               <button type="submit">Check Devices Needing Charge</button>
+               @if (TempData["NeedChargeMessage"] != null)
+               {
+               <div class="alert alert-success" role="alert">
+                  @TempData["NeedChargeMessage"]
+               </div>
+               }
+               @if (TempData["NeedChargeError"] != null)
+               {
+               <div class="alert alert-danger" role="alert">
+                  @TempData["NeedChargeError"]
+               </div>
+               }
+               @if (TempData["DevicesNeedCharge"] != null)
+               {
+               <h3 style="color: white;">Rooms that Need Charging</h3>
+               <ul>
+                  @foreach (var room in (int[])TempData["DevicesNeedCharge"])
+                  {
+                  <li>Room: @room</li>
+                  }
+               </ul>
+               }
+               else
+               {
+               <p>No rooms need charging.</p>
+               }
+               }
+            </div>
+         </section>
+         } 
 
     </div>
+    <script src="~/js/tailwind.config.js"></script>
     <script>
-        // Add click event listeners to the section titles
-        var sectionTitles = document.querySelectorAll('.section-title');
-        sectionTitles.forEach(function (title) {
-            title.addEventListener('click', function () {
-                var content = this.nextElementSibling;
-                content.style.maxHeight = content.style.maxHeight ? null : content.scrollHeight + 'px';
+        // Wrap your JavaScript code in a window.onload event
+        window.onload = function () {
+            var sectionTitles = document.querySelectorAll('.section-title');
+            sectionTitles.forEach(function (title) {
+                title.addEventListener('click', function () {
+                    var content = this.nextElementSibling;
+                    content.style.maxHeight = content.style.maxHeight ? null : content.scrollHeight + 'px';
+                });
             });
-        });
+        }
     </script>
-
 </body>
-
 </html>
