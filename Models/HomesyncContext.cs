@@ -7,13 +7,15 @@ namespace InfinitySystems.Models
 {
     public partial class HomesyncContext : DbContext
     {
+        private readonly IConfiguration _configuration;
         public HomesyncContext()
         {
         }
 
-        public HomesyncContext(DbContextOptions<HomesyncContext> options)
+        public HomesyncContext(DbContextOptions<HomesyncContext> options, IConfiguration configuration)
             : base(options)
         {
+            _configuration = configuration;
         }
 
         public DbSet<Admin> Admins { get; set; }
@@ -38,9 +40,13 @@ namespace InfinitySystems.Models
 
         public DbSet<Users> User { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-            => optionsBuilder.UseSqlServer("Server=localhost;Database=Homesync;User Id=sa;Password=NorkAgency@1901;TrustServerCertificate=true");
-
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                string connectionString = _configuration.GetConnectionString("DefaultConnection");
+                optionsBuilder.UseSqlServer(connectionString);
+            }
+        }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
