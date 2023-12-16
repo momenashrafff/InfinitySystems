@@ -18,11 +18,11 @@
     <script type="text/javascript" src="~/js/app.js"></script>
     <div class="home-container">
         <header data-role="Header" class="home-header">
-            <img src="~/images/Events/Create.png" class="home-image" />
-            <img src="~/images/Events/Assign.png" class="home-image" />
-            <img src="~/images/Events/Uninvite.png" class="home-image" />
-            <img src="~/images/Events/SearchEvent.png" class="home-image" />
-            <img src="~/images/Events/Remove.png" class="home-image" />
+            <img src="~/images/Events/Create.png" class="home-image" onclick="toggleContainer()" />
+            <img src="~/images/Events/Assign.png" class="home-image" onclick="toggleContainer()" />
+            <img src="~/images/Events/Uninvite.png" class="home-image" onclick="toggleContainer()" />
+            <img src="~/images/Events/SearchEvent.png" class="home-image" onclick="toggleContainer()" />
+            <img src="~/images/Events/Remove.png" class="home-image" onclick="toggleContainer()" />
             <div data-role="BurgerMenu" class="home-burger-menu" onclick="openNav()">
                 <svg viewBox="0 0 1024 1024" class="home-icon">
                     <path d="M128 554.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 298.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 810.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667z"></path>
@@ -38,6 +38,9 @@
                 <a href="~/Task/Index">Tasks</a>
             </div>
         </header>
+        <div id="myContainer" class="container">
+            <button id="closeButton" onclick="toggleContainer()" class="close-button">X</button>
+        </div>
         <div class="home-hero">
             <img alt="image" src="~/images/Events/INFO.png" class="home-image5" />
             <div class="home-container1">
