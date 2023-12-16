@@ -1,43 +1,4 @@
-﻿@* @using Microsoft.AspNetCore.Mvc.Rendering;
-@model InfinitySystems.Models.Users
-@{
-    ViewData["Title"] = "Home";
-}
-
-<header style="display: flex; align-items: center; justify-content: space-between; padding: 10px; background-color: #f8f9fa;">
-    <button style="transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)';" onmouseout="this.style.transform='scale(1)';">Profile</button>
-    <img src="~/images/HomePage(1).png" alt="Logo" style="border-radius: 50%; width: 170px; height: 60px;">
-    <button style="transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.1)';" onmouseout="this.style.transform='scale(1)';">Log out</button>
-</header>
-
-<head>
-    <link rel="stylesheet" href="~/css/site.css" />
-</head>
-<body>
-    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 20px;">
-        <form method="get" asp-action="Index" asp-controller="Device">
-            <input type="image" src="~/images/Devices.png" alt="Devices" style="width: 100%; cursor: pointer; transition: transform 0.5s;" onmouseover="this.style.transform='scale(1.05)';" onmouseout="this.style.transform='scale(1)';">
-        </form>
-        <form method="get" asp-action="Index" asp-controller="Room">
-        <input type="image" src="~/images/Rooms.png" alt="Rooms" style="width: 100%; cursor: pointer; transition: transform 0.5s;" onmouseover="this.style.transform='scale(1.05)';" onmouseout="this.style.transform='scale(1)';">
-        </form>
-        <form method="get" asp-action="Index" asp-controller="Event">
-        <input type="image" src="~/images/Events.png" alt="Events" style="width: 100%; cursor: pointer; transition: transform 0.5s;" onmouseover="this.style.transform='scale(1.05)';" onmouseout="this.style.transform='scale(1)';">
-
-        </form>
-        <form method="get" asp-action="Index" asp-controller="Task">
-        <input type="image" src="~/images/Tasks.png" alt="Tasks" style="width: 100%; cursor: pointer; transition: transform 0.5s;" onmouseover="this.style.transform='scale(1.05)';" onmouseout="this.style.transform='scale(1)';">
-        </form>
-        <form method="get" asp-action="Index" asp-controller="Comms">
-        <input type="image" src="~/images/Comms.png" alt="Comms" style="width: 100%; cursor: pointer; transition: transform 0.5s;" onmouseover="this.style.transform='scale(1.05)';" onmouseout="this.style.transform='scale(1)';">
-        </form>
-        <form method="get" asp-action="Index" asp-controller="Finance">
-        <input type="image" src="~/images/Finance.png" alt="Finance" style="width: 100%; cursor: pointer; transition: transform 0.5s;" onmouseover="this.style.transform='scale(1.05)';" onmouseout="this.style.transform='scale(1)';">
-        </form>
-    </div>
-</body> *@
-
-@{
+﻿@{
     ViewData["Title"] = "Home";
 }
 
@@ -66,21 +27,70 @@
             </ul>
         </nav>
     </header>
-    <br>
-    <br>
-    @foreach(var user in ViewBag.user){
-        <p>ID: @user.ID</p>
-        <p>First Name: @user.F_Name</p>
-        <p>Last Name: @user.L_Name</p>
-        <p>Email: @user.Email</p>
-        <p>Preferences: @user.Preferences</p>
-        <p>Type: @user.Type</p>
-        <p>Birthdate: @user.Birth_Date</p>
-        <p>Age: @user.Age</p>
-        @if(ViewBag.isAdmin){
-            <p>Number of Guests Present: @ViewBag.guests</p>
+    
+    <div class="content-wrapper">
+        <h1 class="title">Profile</h1>
+        @foreach(var user in ViewBag.user){
+            <p class="card-title">ID: @user.ID</p>
+            <p class="card-title">First Name: @user.F_Name</p>
+            <p class="card-title">Last Name: @user.L_Name</p>
+            <p class="card-title">Email: @user.Email</p>
+            <p class="card-title">Preferences: @user.Preferences</p>
+            <p class="card-title">Type: @user.Type</p>
+            <p class="card-title">Birthdate: @user.Birth_Date</p>
+            <p class="card-title">Age: @user.Age</p>
+            @if(ViewBag.isAdmin){
+                <p class="card-title">Number of Guests Present: @ViewBag.guests</p>
+            }
         }
+    <br>
+    <br>
+    @if(ViewBag.isAdmin) {
+        @if(TempData["Remove"] != null){
+            if(TempData["Remove"].Equals("Success")){
+                <alert class="alert alert-success">Guest Removed</alert>
+            }
+            else{
+                <alert class="alert alert-danger">Guest Not Removed</alert>
+            }
+        }
+        <section>
+            <h2 class="section-title" style="color: white;">Remove Guest</h2>
+            <div class="section-content">
+                <form method="post" asp-action="GuestRemove" asp-controller="HomePage">
+                  <input type="number" name="id" placeholder="Guest ID" />
+                  <button type="submit" value="Remove Guest" >Remove Guest</button>
+                </form>
+            </div>
+        </section>
+        <section>
+            <h2 class="section-title" style="color: white;">SetAllowedGuests</h2>
+            <div class="section-content"> 
+                @if(TempData["Set"] != null){
+                    if(TempData["Set"].Equals("Success")){
+                        <alert class="alert alert-success">Changed Number Of Allowed Guests Successfully</alert>
+                    }
+                    else{
+                        <alert class="alert alert-danger">Didn't Change Number Of Allowed Guests</alert>
+                    }
+                }
+                <form method="post" asp-action="SetAllowedGuests" asp-controller="HomePage">
+                  <div>
+                    <input type="number" name="id" placeholder="Admin ID" />
+                  </div>
+                  <div>
+                    <input type="number" name="num" placeholder="Number of Allowed Guests" />
+                  </div>
+                  <button type="submit" value="Set">Set</button>
+                </form>
+            </div>
+        </section>
+
+      
     }
+
+    </div>
+    @*
     @if(ViewBag.isAdmin){
         @if(TempData["Remove"] != null){
             if(TempData["Remove"].Equals("Success")){
@@ -109,6 +119,18 @@
         <input type="number" name="num" placeholder="Number of Allowed Guests" />
         <button type="submit" value="Set"/>
       </form>
+    } *@
+    <script>
+    // Wrap your JavaScript code in a window.onload event
+    window.onload = function () {
+        var sectionTitles = document.querySelectorAll('.section-title');
+        sectionTitles.forEach(function (title) {
+            title.addEventListener('click', function () {
+                var content = this.nextElementSibling;
+                content.style.maxHeight = content.style.maxHeight ? null : content.scrollHeight + 'px';
+            });
+        });
     }
+    </script>
 </body>
 </html>
