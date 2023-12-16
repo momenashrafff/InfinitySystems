@@ -129,12 +129,19 @@
         }
         @using (Html.BeginForm("SearchEvent", "Event", FormMethod.Post))
         {
-            if (TempData["REMessage"] != null)
+            /*@if (TempData["Events"] != null)
             {
-                <div class="alert alert-success" role="alert">
-                    @TempData["REMessage"]
+                <div id="Events" class="container">
+                    <h2>Events</h2>
+                    @foreach (var event in (List<Calendar>) TempData["Events"])
+                    {
+                        <div class="event">
+                        <h3>@event.Event_Id</h3>
+                        <!-- Display other event details here -->
+                        </div>
+                    }
                 </div>
-            }
+            }*/
             <div id="Search" class="container hide">
                     <button id="closeButton" type="button" onclick="toggleContainer('Search', event)" class="close-button">X</button>
                     <img src="/images/Events/Elogo.png" class="myImage">

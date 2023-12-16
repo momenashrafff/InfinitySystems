@@ -105,7 +105,8 @@ namespace InfinitySystems.Controllers
             {
                 return RedirectToAction("Login_Register", "Login_Register");
             }
-            _context.Database.ExecuteSqlInterpolated($"Uninvited @event_id={calendar.Event_Id}, @user_id ={Id.Value}");
+            var events = _context.Calendars.FromSqlInterpolated($"EXECUTE ViewEvent @event_id={calendar.Event_Id}, @user_id ={Id.Value}").ToList();
+            TempData["Events"] = events;
             return RedirectToAction("Index", "Event");
         }
 
