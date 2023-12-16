@@ -39,17 +39,23 @@ namespace InfinitySystems.Controllers
             {
                 return RedirectToAction("Login_Register", "Login_Register");
             }
-            int result = _context.Database.ExecuteSqlInterpolated($"CreateEvent @event_id={calendar.Event_Id}, @user_id ={Id.Value}, @name ={calendar.Name}, @location ={calendar.Location}, @description ={calendar.Location}, @reminder_date={calendar.Reminder_Date}, @other_user_id={calendar.User_Assigned_To}");
-            if (result > 0)
+            try
             {
-                TempData["CMessage"] = "Event Has Been Created Successfully";
-                return RedirectToAction("Index", "Event");
+                int result = _context.Database.ExecuteSqlInterpolated($"CreateEvent @event_id={calendar.Event_Id}, @user_id ={Id.Value}, @name ={calendar.Name}, @location ={calendar.Location}, @description ={calendar.Location}, @reminder_date={calendar.Reminder_Date}, @other_user_id={calendar.User_Assigned_To}");
+                if (result > 0)
+                {
+                    TempData["CMessage"] = "Event Has Been Created Successfully";
+                }
+                else
+                {
+                    TempData["CMessage"] = "Event Hasn't Been Created Successfully";
+                }
             }
-            else
+            catch (Exception ex)
             {
-                TempData["CMessage"] = "Event Hasn't Been Created Successfully";
-                return RedirectToAction("Index", "Event");
+                TempData["CMessage"] = "An error occurred while creating the event.";
             }
+            return RedirectToAction("Index", "Event");
         }
 
         [HttpPost]
@@ -61,17 +67,23 @@ namespace InfinitySystems.Controllers
             {
                 return RedirectToAction("Login_Register", "Login_Register");
             }
-            int result = _context.Database.ExecuteSqlInterpolated($"AssignUser @event_id={calendar.Event_Id}, @user_id ={calendar.User_Assigned_To}");
-            if (result > 0)
+            try
             {
-                TempData["AsMessage"] = "Person Assigned Successfully";
-                return RedirectToAction("Index", "Event");
+                int result = _context.Database.ExecuteSqlInterpolated($"AssignUser @event_id={calendar.Event_Id}, @user_id ={calendar.User_Assigned_To}");
+                if (result > 0)
+                {
+                    TempData["AsMessage"] = "Person Assigned Successfully";
+                }
+                else
+                {
+                    TempData["AsMessage"] = "Person Wasn't Assigned Successfully";
+                }
             }
-            else
+            catch (Exception ex)
             {
-                TempData["AsMessage"] = "Person Wasn't Assigned Successfully";
-                return RedirectToAction("Index", "Event");
+                TempData["AsMessage"] = "An error occurred while assigning the person.";
             }
+            return RedirectToAction("Index", "Event");
         }
 
         [HttpPost]
@@ -83,17 +95,23 @@ namespace InfinitySystems.Controllers
             {
                 return RedirectToAction("Login_Register", "Login_Register");
             }
-            int result = _context.Database.ExecuteSqlInterpolated($"Uninvited @event_id={calendar.Event_Id}, @user_id ={calendar.User_Assigned_To}");
-            if (result > 0)
+            try
             {
-                TempData["INVMessage"] = "User Uninvited To Event Successfully";
-                return RedirectToAction("Index", "Event");
+                int result = _context.Database.ExecuteSqlInterpolated($"Uninvited @event_id={calendar.Event_Id}, @user_id ={calendar.User_Assigned_To}");
+                if (result > 0)
+                {
+                    TempData["INVMessage"] = "User Uninvited To Event Successfully";
+                }
+                else
+                {
+                    TempData["INVMessage"] = "User Was Uninvited To Event InSuccessfully";
+                }
             }
-            else
+            catch (Exception ex)
             {
-                TempData["INVMessage"] = "User Wasn't Uninvited To Event Successfully";
-                return RedirectToAction("Index", "Event");
+                TempData["INVMessage"] = "An error occurred while uninviting the user.";
             }
+            return RedirectToAction("Index", "Event");
         }
 
         [HttpPost]
@@ -105,10 +123,18 @@ namespace InfinitySystems.Controllers
             {
                 return RedirectToAction("Login_Register", "Login_Register");
             }
-            var events = _context.Calendars.FromSqlInterpolated($"EXECUTE ViewEvent @event_id={calendar.Event_Id}, @user_id ={Id.Value}").ToList();
-            TempData["Events"] = events;
-            return RedirectToAction("Index", "Event");
+            try
+            {
+                var events = _context.Calendars.FromSqlInterpolated($"EXECUTE ViewEvent @event_id={calendar.Event_Id}, @user_id ={Id.Value}").ToList();
+                ViewBag.Events = events;
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Events = "Couldnt Find Events Assigned To User";
+            }
+            return View("Index");
         }
+
 
         [HttpPost]
         [Route("RemoveEvent")]
@@ -119,17 +145,23 @@ namespace InfinitySystems.Controllers
             {
                 return RedirectToAction("Login_Register", "Login_Register");
             }
-            int result = _context.Database.ExecuteSqlInterpolated($"Uninvited @event_id={calendar.Event_Id}, @user_id ={Id.Value}");
-            if (result > 0)
+            try
             {
-                TempData["REMessage"] = "Event Removed Successfully";
-                return RedirectToAction("Index", "Event");
+                int result = _context.Database.ExecuteSqlInterpolated($"Uninvited @event_id={calendar.Event_Id}, @user_id ={Id.Value}");
+                if (result > 0)
+                {
+                    TempData["REMessage"] = "Event Removed Successfully";
+                }
+                else
+                {
+                    TempData["REMessage"] = "Event wasn't Removed Successfully";
+                }
             }
-            else
+            catch (Exception ex)
             {
-                TempData["REMessage"] = "Event wasn't Removed Successfully";
-                return RedirectToAction("Index", "Event");
+                TempData["REMessage"] = "An error occurred while removing the event.";
             }
+            return RedirectToAction("Index", "Event");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

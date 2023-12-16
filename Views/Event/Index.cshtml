@@ -44,7 +44,7 @@
         {
             if (TempData["CMessage"] != null)
             {
-            <div class="alert alert-success" role="alert">
+                <div class="home-text" role="alert">
                     @TempData["CMessage"]
             </div>
             }
@@ -83,7 +83,7 @@
         {
             if (TempData["AsMessage"] != null)
             {
-                <div class="alert alert-success" role="alert">
+                <div class="home-text" role="alert">
                     @TempData["AsMessage"]
                 </div>
             }
@@ -107,7 +107,7 @@
         {
             if (TempData["INVMessage"] != null)
             {
-                <div class="alert alert-success" role="alert">
+                <div class="home-text" role="alert">
                     @TempData["INVMessage"]
                 </div>
             }
@@ -129,19 +129,28 @@
         }
         @using (Html.BeginForm("SearchEvent", "Event", FormMethod.Post))
         {
-            /*@if (TempData["Events"] != null)
+            @if (ViewBag.Events != null)
             {
-                <div id="Events" class="container">
+                <div id="Events" class="eventscontainer">
                     <h2>Events</h2>
-                    @foreach (var event in (List<Calendar>) TempData["Events"])
+                    @if (ViewBag.Events is List<Calendar>)
                     {
-                        <div class="event">
-                        <h3>@event.Event_Id</h3>
-                        <!-- Display other event details here -->
+                        foreach (var cevent in (List<Calendar>)ViewBag.Events)
+                        {
+                            <div class="home-text03">
+                                <h3>@cevent.Event_Id</h3>
+                                <p>@cevent.Name</p>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <div class="home-text03">
+                            <p>@ViewBag.Events</p>
                         </div>
                     }
                 </div>
-            }*/
+            }
             <div id="Search" class="container hide">
                     <button id="closeButton" type="button" onclick="toggleContainer('Search', event)" class="close-button">X</button>
                     <img src="/images/Events/Elogo.png" class="myImage">
@@ -158,7 +167,7 @@
         {
             if (TempData["REMessage"] != null)
             {
-                <div class="alert alert-success" role="alert">
+                <div class="home-text" role="alert">
                     @TempData["REMessage"]
                 </div>
             }

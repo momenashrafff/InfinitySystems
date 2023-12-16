@@ -379,3 +379,19 @@ input[type="date"] {
     align-items: center;
     justify-content: center;
 }
+
+/*Events Container*/
+.eventscontainer {
+    height: 100%;
+    width: 150px;
+    position: fixed;
+    right: 0;
+    color: white;
+    background-color: black;
+    padding: 20px;
+    display: flex;
+    align-self: center;
+    align-items: center;
+    flex-direction: column;
+}
+
