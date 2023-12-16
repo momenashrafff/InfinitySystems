@@ -58,8 +58,9 @@ namespace InfinitySystems.Controllers
 
             if (success.Value.ToString().Equals("False"))
             {
-                ViewBag.LoginStatus = 0;
+                // ViewBag.LoginStatus = 0;
                 ViewBag.Id = -1;
+                TempData["LoginStatus"] = 0;
                 return RedirectToAction("Login_Register", "Login_Register");
             }
             else
@@ -102,8 +103,9 @@ namespace InfinitySystems.Controllers
 
             if (user_id.Value.ToString().Equals("-1"))
             {
-                ViewBag.SignUpStatus = 0;
+                // ViewBag.SignUpStatus = 0;
                 ViewBag.Id = -1;
+                TempData["SignUpStatus"] = 0;
                 return RedirectToAction("Login_Register", "Login_Register");
             }
             else
