@@ -1,16 +1,17 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using InfinitySystems.Models;
-
 namespace InfinitySystems.Controllers
 {
     public class EventController : Controller
     {
         private readonly IConfiguration _configuration;
+        private readonly HomesyncContext _context;
 
-        public EventController(IConfiguration configuration)
+        public EventController(IConfiguration configuration, HomesyncContext context)
         {
             _configuration = configuration;
+            _context = context;
         }
 
         public IActionResult Event()

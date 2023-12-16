@@ -2,7 +2,6 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using InfinitySystems.Models;
 using Microsoft.EntityFrameworkCore;
-using InfinitySystems.Models;
 using Microsoft.IdentityModel.Tokens;
 
 namespace InfinitySystems.Controllers
