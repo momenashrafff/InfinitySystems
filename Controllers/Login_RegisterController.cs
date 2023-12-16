@@ -15,8 +15,6 @@ namespace InfinitySystems.Controllers
         private const string SessionUserType = "";
         private readonly HomesyncContext _context;
 
-        // private readonly ILogin _loginUser;
-
         public Login_RegisterController(IConfiguration configuration, HomesyncContext context)
         {
             _configuration = configuration;
