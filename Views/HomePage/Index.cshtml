@@ -78,21 +78,36 @@
         <p>Birthdate: @user.Birth_Date</p>
         <p>Age: @user.Age</p>
         @if(ViewBag.isAdmin){
-            <p>Number of guests allowed: @ViewBag.guests</p>
-        }
-    }
-    @if(TempData["Remove"] != null){
-        if(TempData["Remove"].Equals("Success")){
-            <alert class="alert alert-success">Guest Removed</alert>
-        }
-        else{
-            <alert class="alert alert-danger">Guest Not Removed</alert>
+            <p>Number of Guests Present: @ViewBag.guests</p>
         }
     }
     @if(ViewBag.isAdmin){
+        @if(TempData["Remove"] != null){
+            if(TempData["Remove"].Equals("Success")){
+                <alert class="alert alert-success">Guest Removed</alert>
+            }
+            else{
+                <alert class="alert alert-danger">Guest Not Removed</alert>
+            }
+        }
       <form method="post" asp-action="GuestRemove" asp-controller="HomePage">
         <input type="number" name="id" placeholder="Guest ID" />
         <button type="submit" value="Remove Guest" />
+      </form>
+
+    @if(TempData["Set"] != null){
+        if(TempData["Set"].Equals("Success")){
+            <alert class="alert alert-success">Changed Number Of Allowed Guests Successfully</alert>
+        }
+        else{
+            <alert class="alert alert-danger">Didn't Change Number Of Allowed Guests</alert>
+        }
+    }
+
+      <form method="post" asp-action="SetAllowedGuests" asp-controller="HomePage">
+        <input type="number" name="id" placeholder="Admin ID" />
+        <input type="number" name="num" placeholder="Number of Allowed Guests" />
+        <button type="submit" value="Set"/>
       </form>
     }
 </body>

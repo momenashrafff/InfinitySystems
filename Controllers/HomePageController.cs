@@ -4,6 +4,7 @@ using InfinitySystems.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Data.SqlClient;
 using System.Data;
+using Microsoft.IdentityModel.Tokens;
 
 namespace InfinitySystems.Controllers
 {
@@ -28,7 +29,10 @@ namespace InfinitySystems.Controllers
                 return RedirectToAction("Login_Register", "Login_Register");
             }
             ViewBag.user = _context.User.FromSql($"SELECT * FROM Users WHERE Id = {Id.Value}").ToList();
-            ViewBag.guests = _context.Admins.FromSql($"SELECT * FROM Admin WHERE admin_id = {Id.Value}").ToList()[0].No_Of_Guests_Allowed;
+            ViewBag.guests = (from guest in _context.Guests
+                              join admin in _context.Admins on guest.Guest_Of equals admin.Admin_Id
+                              where admin.Admin_Id == Id.Value
+                              select guest.Guest_Id).Count();
             ViewBag.isAdmin = HttpContext.Session.GetString("SessionUserType") == "Admin";
             return View();
         }
@@ -62,6 +66,35 @@ namespace InfinitySystems.Controllers
             else
             {
                 TempData["Remove"] = "Success";
+            }
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public IActionResult SetAllowedGuests(int id, int num)
+        {
+            int? Id = HttpContext.Session.GetInt32("SessionUserId");
+            if (Id == null || Id.Value == -1)
+            {
+                return RedirectToAction("Login_Register", "Login_Register");
+            }
+
+            bool isAdmin = _context.Admins.FromSqlRaw($"SELECT * FROM Admin WHERE Admin.admin_id = {Id}").ToList().IsNullOrEmpty() ? false : true;
+            if (isAdmin)
+            {
+                int result = _context.Database.ExecuteSqlInterpolated($"GuestsAllowed @admin_id={id}, @number_of_guests={num}");
+                if (result > 0)
+                {
+                    TempData["Set"] = "Success";
+                }
+                else
+                {
+                    TempData["Set"] = "Fail";
+                }
+            }
+            else
+            {
+                TempData["Set"] = "Fail";
             }
             return RedirectToAction("Index");
         }
