@@ -88,6 +88,7 @@ namespace InfinitySystems.Controllers
             return RedirectToAction("Index", "Room");
         }
 
+        [HttpPost]
         public IActionResult RoomStatus(int RoomId, string status)
         {
             IEnumerable<Room> rooms = _context.Rooms.FromSqlRaw($"SELECT * FROM Room WHERE Id = {RoomId}").ToList();
