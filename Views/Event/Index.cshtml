@@ -1,5 +1,5 @@
 @using Microsoft.AspNetCore.Mvc.Rendering;
-@model InfinitySystems.Models.Users
+@model InfinitySystems.Models.Calendar
 @{
     ViewData["Title"] = "Events";
     Layout = null;
@@ -47,26 +47,26 @@
                 <img src="/images/Events/Elogo.png" class="myImage">
                 <div class="event-container">
                     <div class="field">
-                        @Html.TextBox("EventID", null, new { @type = "number", @placeholder = "EventID  ", @required = "required", @maxlength = "10" })
+                        @Html.TextBoxFor(m => m.Event_Id, new { @type = "number", @placeholder = "EventID  ", @required = "required", @maxlength = "10" })
                         <div class="line"></div>
                     </div>
                     <div class="field">
-                        @Html.TextBox("EventName", null, new { @placeholder = "Event Name", @required = "required", @maxlength = "50" })
+                        @Html.TextBoxFor(m => m.Name, new { @placeholder = "Event Name", @required = "required", @maxlength = "50" })
                         <div class="line"></div>
                     </div>
                     <div class="field">
-                        @Html.TextBox("Description", null, new { @placeholder = "Description", @required = "required", @maxlength = "200" })
+                        @Html.TextBoxFor(m => m.Description, new { @placeholder = "Description", @required = "required", @maxlength = "200" })
                         <div class="line"></div>
                     </div>
                     <div class="field">
-                        @Html.TextBox("Location", null, new { @placeholder = "Location", @required = "required", @maxlength = "40" })
+                        @Html.TextBoxFor(m => m.Location, new { @placeholder = "Location", @required = "required", @maxlength = "40" })
                         <div class="line"></div>
                     </div>
                     <div>
-                        @Html.TextBox("Date", null, new { @type = "date", @class = "birth", @placeholder = "Date", @required = "required" })
+                        @Html.TextBoxFor(m => m.Reminder_Date, new { @type = "date", @class = "birth", @placeholder = "Date", @required = "required" })
                     </div>
                     <div class="field">
-                        @Html.TextBox("OtherUserID", null, new { @type = "number", @placeholder = "Other User ID", @maxlength = "10" })
+                        @Html.TextBoxFor(m => m.User_Assigned_To, new { @type = "number", @placeholder = "Other User ID", @maxlength = "10" })
                         <div class="line"></div>
                     </div>
                     <input type="submit" class="submit" value="Submit" name="CreateE" />
@@ -80,11 +80,11 @@
                 <img src="/images/Events/Elogo.png" class="myImage">
                 <div class="event-container">
                     <div class="field">
-                        @Html.TextBox("EventID", null, new { @type = "number", @placeholder = "EventID", @maxlength = "10" })
+                        @Html.TextBoxFor(m => m.Event_Id, new { @type = "number", @placeholder = "EventID", @maxlength = "10" })
                         <div class="line"></div>
                     </div>
                     <div class="field">
-                        @Html.TextBox("UserID", null, new { @type = "number", @placeholder = "UserID", @maxlength = "10" })
+                        @Html.TextBoxFor(m => m.User_Assigned_To, new { @type = "number", @placeholder = "UserID", @maxlength = "10" })
                         <div class="line"></div>
                     </div>
                     <input type="submit" class="submit" value="Submit" name="AssignE" />
@@ -98,11 +98,11 @@
                 <img src="/images/Events/Elogo.png" class="myImage">
                 <div class="event-container">
                     <div class="field">
-                        @Html.TextBox("EventID", null, new { @type = "number", @placeholder = "EventID", @maxlength = "10" })
+                        @Html.TextBoxFor(m => m.Event_Id, new { @type = "number", @placeholder = "EventID", @maxlength = "10" })
                         <div class="line"></div>
                     </div>
                     <div class="field">
-                        @Html.TextBox("UserID", null, new { @type = "number", @placeholder = "UserID", @maxlength = "10" })
+                        @Html.TextBoxFor(m => m.User_Assigned_To, new { @type = "number", @placeholder = "UserID", @maxlength = "10" })
                         <div class="line"></div>
                     </div>
                     <input type="submit" class="submit" value="Submit" name="UninviteE" />
@@ -116,11 +116,11 @@
                 <img src="/images/Events/Elogo.png" class="myImage">
                 <div class="event-container">
                     <div class="field">
-                        @Html.TextBox("EventID", null, new { @type = "number", @placeholder = "EventID", @maxlength = "10" })
+                        @Html.TextBoxFor(m => m.Event_Id, new { @type = "number", @placeholder = "EventID", @maxlength = "10" })
                         <div class="line"></div>
                     </div>
                     <div class="field">
-                        @Html.TextBox("UserID", null, new { @type = "number", @placeholder = "UserID", @maxlength = "10" })
+                        @Html.TextBoxFor(m => m.User_Assigned_To, new { @type = "number", @placeholder = "UserID", @maxlength = "10" })
                         <div class="line"></div>
                     </div>
                     <input type="submit" class="submit" value="Submit" name="SearchE" />
@@ -134,11 +134,11 @@
                 <img src="/images/Events/Elogo.png" class="myImage">
                 <div class="event-container">
                     <div class="field">
-                        @Html.TextBox("EventID", null, new { @type = "number", @placeholder = "EventID", @maxlength = "10" })
+                        @Html.TextBoxFor(m => m.Event_Id, new { @type = "number", @placeholder = "EventID", @maxlength = "10" })
                         <div class="line"></div>
                     </div>
                     <div class="field">
-                        @Html.TextBox("UserID", null, new { @type = "number", @placeholder = "UserID", @maxlength = "10" })
+                        @Html.TextBoxFor(m => m.User_Assigned_To, new { @type = "number", @placeholder = "UserID", @maxlength = "10" })
                         <div class="line"></div>
                     </div>
                     <input type="submit" class="submit" value="Submit" name="RemoveE" />
