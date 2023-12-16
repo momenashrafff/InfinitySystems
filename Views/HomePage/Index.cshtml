@@ -66,6 +66,34 @@
             </ul>
         </nav>
     </header>
+    <br>
+    <br>
+    @foreach(var user in ViewBag.user){
+        <p>ID: @user.ID</p>
+        <p>First Name: @user.F_Name</p>
+        <p>Last Name: @user.L_Name</p>
+        <p>Email: @user.Email</p>
+        <p>Preferences: @user.Preferences</p>
+        <p>Type: @user.Type</p>
+        <p>Birthdate: @user.Birth_Date</p>
+        <p>Age: @user.Age</p>
+        @if(ViewBag.isAdmin){
+            <p>Number of guests allowed: @ViewBag.guests</p>
+        }
+    }
+    @if(TempData["Remove"] != null){
+        if(TempData["Remove"].Equals("Success")){
+            <alert class="alert alert-success">Guest Removed</alert>
+        }
+        else{
+            <alert class="alert alert-danger">Guest Not Removed</alert>
+        }
+    }
+    @if(ViewBag.isAdmin){
+      <form method="post" asp-action="GuestRemove" asp-controller="HomePage">
+        <input type="number" name="id" placeholder="Guest ID" />
+        <button type="submit" value="Remove Guest" />
+      </form>
+    }
 </body>
 </html>
-```
