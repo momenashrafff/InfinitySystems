@@ -75,6 +75,16 @@ ViewData["Title"] = "Login/Register";
                         @Html.TextBoxFor(m => m.Email, new { @class = "email ele", @placeholder = "Email", @required = "required", @maxlength = "50" })
                         @Html.PasswordFor(m => m.Password, new { @class = "password ele", @placeholder = "Password", @required = "required", @maxlength = "10" })
                         <input type="submit" class="clkbtn" value="Login" />
+                        @if(TempData["LoginStatus"] != null)
+                        {
+                              
+                              // make alert for this message alert danger
+                              @if(TempData["LoginStatus"].ToString() == "0")
+                              {
+                                    <p class="alert alert-danger">Login Error</p>
+                              }
+                              
+                        }
                     </div>
                 }
                 @using (Html.BeginForm("SignUp", "Login_Register", FormMethod.Post))
@@ -89,6 +99,15 @@ ViewData["Title"] = "Login/Register";
                                 @Html.TextBoxFor(m => m.Birth_Date, new { @type = "date", @class = "birthdate", @placeholder = "Birthdate", @required = "required" })
                             </p>
                             <input type="submit" class="clkbtn" value="Signup" name="RegisterB" />
+                            @if(TempData["SignUpStatus"] != null)
+                            {
+                                // make alert for this message alert danger
+                                @if(TempData["SignUpStatus"].ToString() == "0")
+                                {
+                                    <p class="alert alert-danger">Register Error</p>
+                                }
+                               
+                            }
                         </div>
                     </div>
                 }
