@@ -61,7 +61,7 @@ namespace InfinitySystems.Controllers
             {
                 return RedirectToAction("Login_Register", "Login_Register");
             }
-            int result = _context.Database.ExecuteSqlInterpolated($"AddReminder @task_id={taskid}, @reminder={ReminderDate}");
+            int result = _context.Database.ExecuteSqlInterpolated($"AddReminder @user_id={Id.Value}, @task_id={taskid}, @reminder={ReminderDate}");
             if (result > 0)
             {
                 TempData["AddReminder"] = "Done successfully!";
@@ -80,7 +80,7 @@ namespace InfinitySystems.Controllers
             {
                 return RedirectToAction("Login_Register", "Login_Register");
             }
-            int result = _context.Database.ExecuteSqlInterpolated($"UpdateTaskDeadline @deadline ={deadline}, @task_id={taskid}");
+            int result = _context.Database.ExecuteSqlInterpolated($"UpdateTaskDeadline @user_id={Id.Value}, @deadline ={deadline}, @task_id={taskid}");
             if (result > 0)
             {
                 TempData["UpdateTaskDeadline"] = "Done successfully!";
