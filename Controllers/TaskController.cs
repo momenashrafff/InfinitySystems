@@ -13,6 +13,7 @@ using static System.Net.Mime.MediaTypeNames;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.Drawing;
 using System.Threading.Tasks;
+using Humanizer;
 
 namespace InfinitySystems.Controllers
 {
@@ -28,206 +29,68 @@ namespace InfinitySystems.Controllers
         [HttpGet]
         public IActionResult Index()
         {
+            Task task = new Task();
+
+            int? Id = HttpContext.Session.GetInt32("SessionUserId");
+
+            if (Id == null || Id.Value == -1)
+            {
+                return RedirectToAction("Login_Register", "Login_Register");
+            }
+            var result = _context.Tasks.FromSqlRaw("EXEC ViewMyTask @user_id={0}", Id.Value).ToList();
+            ViewBag.tasks = result;
+            return View(task);
+        }
+        [HttpPost]
+        public IActionResult FinishTask(string title)
+        {
             int? Id = HttpContext.Session.GetInt32("SessionUserId");
             if (Id == null || Id.Value == -1)
             {
                 return RedirectToAction("Login_Register", "Login_Register");
             }
-            return RedirectToAction("Task", "Task");
+            int result = _context.Database.ExecuteSqlInterpolated($"FinishMyTask @user_id={Id.Value}, @title={title}");
+            TempData["FinishTask"] = "Task Finished successfully!";
+            return RedirectToAction("Index", "Task");
         }
-        public ActionResult ViewMyTask()
-        {
-            // Get the current user's id from the session
-            int? user_id = HttpContext.Session.GetInt32("SessionUserId");
-
-            // Get the tasks for the current user
-            List<Task> tasks = GetTasksByUser(user_id.Value); // Pass the user_id to the method
-
-            // Pass the tasks to the view
-            return View(tasks);
-        }
-
-        public List<Task> GetTasksByUser(int user_id) // Change the parameter type to int
-        {
-            // Create a connection object to connect to the database
-            SqlConnection conn = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Homesync;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
-
-            // Create a command object to execute the procedure
-            SqlCommand cmd = new SqlCommand("viewmytask", conn);
-            cmd.CommandType = CommandType.StoredProcedure;
-
-            // Add a parameter for the user_id
-            cmd.Parameters.AddWithValue("@user_id", user_id); // Change the parameter name and value to user_id
-
-            // Create a list to store the tasks
-            List<Task> tasks = new List<Task>();
-
-            // Open the connection and execute the reader
-            conn.Open();
-
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            // Loop through the reader and create task objects
-            while (reader.Read())
-            {
-                // Create a task object with the data from the reader
-                Task task = new Task();
-                task.Id = reader.GetInt32(0);
-                task.Name = reader.GetString(1);
-                task.Creation_Date = reader.GetDateTime(2);
-                task.Due_Date = reader.GetDateTime(3);
-                task.Category = reader.GetString(4);
-                task.Creator = reader.GetInt32(5);
-                task.Status = reader.GetString(6);
-                task.Reminder_Date = reader.GetDateTime(7);
-                task.Priority = reader.GetInt32(8);
-
-                // Add the task to the list
-                tasks.Add(task);
-            }
-
-            // Close the reader and the connection
-            reader.Close();
-            conn.Close();
-
-            // Return the list of tasks
-            return tasks;
-        }
-        // This method shows the form to enter the task details
-        public ActionResult AddTask()
-        {
-            // Get the current user's id from the session
-            int? user_id = HttpContext.Session.GetInt32("SessionUserId");
-
-            // Create a new task object
-            Task task = new Task();
-
-            // Pass the task object and the user id to the view
-            return addfunction(task, user_id);
-        }
-
-        // This method saves the task to the database
         [HttpPost]
-        public ActionResult addfunction(Task task, int? user_id) // Add the user id as a parameter
+        public IActionResult AddReminder(int taskid, DateTime ReminderDate)
         {
-            // Validate the task object exit or if nullptr
-            if (ModelState.IsValid)
+            int? Id = HttpContext.Session.GetInt32("SessionUserId");
+            if (Id == null || Id.Value == -1)
             {
-                // Create a connection object to connect to the database
-                SqlConnection conn = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Homesync;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
-
-                // Create a command object to execute the procedure
-                SqlCommand cmd = new SqlCommand("addtask", conn);
-                cmd.CommandType = CommandType.StoredProcedure;
-
-                // Add the parameters for the task details
-                cmd.Parameters.AddWithValue("@name", task.Name);
-                cmd.Parameters.AddWithValue("@creation_date", task.Creation_Date);
-                cmd.Parameters.AddWithValue("@due_date", task.Due_Date);
-                cmd.Parameters.AddWithValue("@category", task.Category);
-                cmd.Parameters.AddWithValue("@creator", task.Creator);
-                cmd.Parameters.AddWithValue("@status", task.Status);
-                cmd.Parameters.AddWithValue("@reminder_date", task.Reminder_Date);
-                cmd.Parameters.AddWithValue("@priority", task.Priority);
-                cmd.Parameters.AddWithValue("@user_id", user_id); // Pass the user id as a parameter
-
-                // Open the connection and execute the command
-                conn.Open();
-                cmd.ExecuteNonQuery();
-                conn.Close();
-
-                // Redirect to the ViewMyTask action
-                return RedirectToAction("Task", "Task"); // to referesh 
+                return RedirectToAction("Login_Register", "Login_Register");
+            }
+            int result = _context.Database.ExecuteSqlInterpolated($"AddReminder @task_id={taskid}, @reminder={ReminderDate}");
+            if (result > 0)
+            {
+                TempData["AddReminder"] = "Done successfully!";
             }
             else
             {
-                // Return the same view with the validation errors
-                return RedirectToAction("Task", "Task"); // to referesh 
+                TempData["AddReminder"] = "failed !";
             }
+            return RedirectToAction("Index", "Task");
         }
-
-        // This method shows the confirmation message
-        public ActionResult DeleteTask(int id)
-        {
-            // Get the current user's id from the session
-            int? user_id = HttpContext.Session.GetInt32("SessionUserId");
-
-            // Get the task by id from the database
-            Task task = GetTaskById(id);
-
-            // Pass the task and the user id to the view
-            return View(task);
-        }
-        public Task GetTaskById(int id)
-        {
-            // Create a connection object to connect to the database
-            SqlConnection conn = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Homesync;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
-
-            // Create a command object to execute the query
-            SqlCommand cmd = new SqlCommand("SELECT * FROM Task WHERE Id = @id", conn);
-
-            // Add a parameter for the id
-            cmd.Parameters.AddWithValue("@id", id);
-
-            // Create a task object to store the result
-            Task task = null;
-
-            // Open the connection and execute the reader
-            conn.Open();
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            // Check if the reader has any rows
-            if (reader.HasRows)
-            {
-                // Read the first row
-                reader.Read();
-
-                // Create a task object with the data from the reader
-                task = new Task();
-                task.Id = reader.GetInt32(0);
-                task.Name = reader.GetString(1);
-                task.Creation_Date = reader.GetDateTime(2);
-                task.Due_Date = reader.GetDateTime(3);
-                task.Category = reader.GetString(4);
-                task.Creator = reader.GetInt32(5);
-                task.Status = reader.GetString(6);
-                task.Reminder_Date = reader.GetDateTime(7);
-                task.Priority = reader.GetInt32(8);
-            }
-
-            // Close the reader and the connection
-            reader.Close();
-            conn.Close();
-
-            // Return the task object
-            return task;
-        }
-
-        // This method removes the task from the database
         [HttpPost]
-        public ActionResult DeleteTask(Task task, int user_id) // Add the user id as a parameter
+        public IActionResult UpdateTaskDeadline(int taskid, DateTime deadline)
         {
-            // Create a connection object to connect to the database
-            SqlConnection conn = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Homesync;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
-
-            // Create a command object to execute the procedure
-            SqlCommand cmd = new SqlCommand("deletetask", conn);
-            cmd.CommandType = CommandType.StoredProcedure;
-
-            // Add the parameters for the task id and the user id
-            cmd.Parameters.AddWithValue("@id", task.Id);
-            cmd.Parameters.AddWithValue("@user_id", user_id); // Pass the user id as a parameter
-
-            // Open the connection and execute the command
-            conn.Open();
-            cmd.ExecuteNonQuery();
-            conn.Close();
-
-            // Redirect to the ViewMyTask action
-            return RedirectToAction("ViewMyTask");
+            int? Id = HttpContext.Session.GetInt32("SessionUserId");
+            if (Id == null || Id.Value == -1)
+            {
+                return RedirectToAction("Login_Register", "Login_Register");
+            }
+            int result = _context.Database.ExecuteSqlInterpolated($"UpdateTaskDeadline @deadline ={deadline}, @task_id={taskid}");
+            if (result > 0)
+            {
+                TempData["UpdateTaskDeadline"] = "Done successfully!";
+            }
+            else
+            {
+                TempData["UpdateTaskDeadline"] = "failed !";
+            }
+            return RedirectToAction("Index", "Task");
         }
-
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
@@ -235,3 +98,4 @@ namespace InfinitySystems.Controllers
         }
     }
 }
+
