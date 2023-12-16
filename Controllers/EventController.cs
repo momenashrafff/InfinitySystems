@@ -13,7 +13,7 @@ namespace InfinitySystems.Controllers
             _configuration = configuration;
         }
 
-        public IActionResult Index()
+        public IActionResult Event()
         {
             int? Id = HttpContext.Session.GetInt32("SessionUserId");
             if (Id == null || Id.Value == -1)

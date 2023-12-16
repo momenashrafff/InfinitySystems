@@ -1,0 +1,57 @@
+@{
+    ViewData["Title"] = "Events";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Home</title>
+    <link rel="stylesheet" href="~/css/Event.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <div id="particles-js"></div>
+    <script type="text/javascript" src="~/js/particles.js"></script>
+    <script type="text/javascript" src="~/js/app.js"></script>
+    <div class="home-container">
+        <header data-role="Header" class="home-header">
+            <img src="~/images/Events/Create.png" class="home-image" />
+            <img src="~/images/Events/Assign.png" class="home-image" />
+            <img src="~/images/Events/Uninvite.png" class="home-image" />
+            <img src="~/images/Events/SearchEvent.png" class="home-image" />
+            <img src="~/images/Events/Remove.png" class="home-image" />
+            <div data-role="BurgerMenu" class="home-burger-menu" onclick="openNav()">
+                <svg viewBox="0 0 1024 1024" class="home-icon">
+                    <path d="M128 554.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 298.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 810.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667z"></path>
+                </svg>
+            </div>
+            <div id="mySidebar" class="sidebar">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+                <a href="~/HomePage/Index">Profile</a>
+                <a href="~/Device/Index">Devices</a>
+                <a href="~/Comms/Index">Communications</a>
+                <a href="~/Finance/Index">Finance</a>
+                <a href="~/Room/Index">Rooms</a>
+                <a href="~/Task/Index">Tasks</a>
+            </div>
+        </header>
+        <div class="home-hero">
+            <img alt="image" src="~/images/Events/INFO.png" class="home-image5" />
+            <div class="home-container1">
+                <h1 class="home-text">This Is The Events Tab..</h1>
+                <h2 class="home-text01">Here You Can Manage, Assign or Check Your Events.</h2>
+                <div class="home-text02">
+                    Use The Above Buttons To Control, Change Or Create Events.
+                </div>
+                <div class="home-text03">
+                    Use Back Or The Top Left Slider To Return Or change Page.
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="~/js/event.js"></script>
+</body>
+</html>
