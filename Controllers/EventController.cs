@@ -26,7 +26,6 @@ namespace InfinitySystems.Controllers
             {
                 return RedirectToAction("Login_Register", "Login_Register");
             }
-            /*ViewBag.events = _context.Calendars.FromSqlRaw($"ViewMyRoom {Id.Value}").ToList();*/
             ViewBag.isAdmin = HttpContext.Session.GetString("SessionUserType") == "Admin";
             return View(calendar);
         }
@@ -40,7 +39,7 @@ namespace InfinitySystems.Controllers
             {
                 return RedirectToAction("Login_Register", "Login_Register");
             }
-            int result = _context.Database.ExecuteSqlInterpolated($"CreateEvent @event_id={calendar.Event_Id}, @user_id ={Id.Value}, @name ={calendar.Name}, @description ={calendar.Location}, @reminder_date={calendar.Reminder_Date}, @other_user_id={calendar.User_Assigned_To}");
+            int result = _context.Database.ExecuteSqlInterpolated($"CreateEvent @event_id={calendar.Event_Id}, @user_id ={Id.Value}, @name ={calendar.Name}, @location ={calendar.Location}, @description ={calendar.Location}, @reminder_date={calendar.Reminder_Date}, @other_user_id={calendar.User_Assigned_To}");
             if (result > 0)
             {
                 TempData["CMessage"] = "Event Has Been Created Successfully";
@@ -84,7 +83,17 @@ namespace InfinitySystems.Controllers
             {
                 return RedirectToAction("Login_Register", "Login_Register");
             }
-            return RedirectToAction("Index", "Event");
+            int result = _context.Database.ExecuteSqlInterpolated($"Uninvited @event_id={calendar.Event_Id}, @user_id ={calendar.User_Assigned_To}");
+            if (result > 0)
+            {
+                TempData["INVMessage"] = "User Uninvited To Event Successfully";
+                return RedirectToAction("Index", "Event");
+            }
+            else
+            {
+                TempData["INVMessage"] = "User Wasn't Uninvited To Event Successfully";
+                return RedirectToAction("Index", "Event");
+            }
         }
 
         [HttpPost]
@@ -108,7 +117,17 @@ namespace InfinitySystems.Controllers
             {
                 return RedirectToAction("Login_Register", "Login_Register");
             }
-            return RedirectToAction("Index", "Event");
+            int result = _context.Database.ExecuteSqlInterpolated($"Uninvited @event_id={calendar.Event_Id}, @user_id ={Id.Value}");
+            if (result > 0)
+            {
+                TempData["REMessage"] = "Event Removed Successfully";
+                return RedirectToAction("Index", "Event");
+            }
+            else
+            {
+                TempData["REMessage"] = "Event wasn't Removed Successfully";
+                return RedirectToAction("Index", "Event");
+            }
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

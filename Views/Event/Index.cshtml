@@ -42,108 +42,134 @@
         </header>
         @using (Html.BeginForm("CreateEvent", "Event", FormMethod.Post))
         {
-        <div id="Create" class="container hide">
-                <button id="closeButton" type="button" onclick="toggleContainer('Create', event)" class="close-button">X</button>
-                <img src="/images/Events/Elogo.png" class="myImage">
-                <div class="event-container">
-                    <div class="field">
-                        @Html.TextBoxFor(m => m.Event_Id, new { @type = "number", @placeholder = "EventID  ", @required = "required", @maxlength = "10" })
-                        <div class="line"></div>
+            if (TempData["CMessage"] != null)
+            {
+            <div class="alert alert-success" role="alert">
+                    @TempData["CMessage"]
+            </div>
+            }
+            <div id="Create" class="container hide">
+                    <button id="closeButton" type="button" onclick="toggleContainer('Create', event)" class="close-button">X</button>
+                    <img src="/images/Events/Elogo.png" class="myImage">
+                    <div class="event-container">
+                        <div class="field">
+                            @Html.TextBoxFor(m => m.Event_Id, new { @type = "number", @placeholder = "EventID  ", @required = "required", @maxlength = "10" })
+                            <div class="line"></div>
+                        </div>
+                        <div class="field">
+                            @Html.TextBoxFor(m => m.Name, new { @placeholder = "Event Name", @required = "required", @maxlength = "50" })
+                            <div class="line"></div>
+                        </div>
+                        <div class="field">
+                            @Html.TextBoxFor(m => m.Description, new { @placeholder = "Description", @required = "required", @maxlength = "200" })
+                            <div class="line"></div>
+                        </div>
+                        <div class="field">
+                            @Html.TextBoxFor(m => m.Location, new { @placeholder = "Location", @required = "required", @maxlength = "40" })
+                            <div class="line"></div>
+                        </div>
+                        <div>
+                            @Html.TextBoxFor(m => m.Reminder_Date, new { @type = "date", @class = "birth", @placeholder = "Date", @required = "required" })
+                        </div>
+                        <div class="field">
+                            @Html.TextBoxFor(m => m.User_Assigned_To, new { @type = "number", @placeholder = "Other User ID", @maxlength = "10" })
+                            <div class="line"></div>
+                        </div>
+                        <input type="submit" class="submit" value="Submit" name="CreateE" />
                     </div>
-                    <div class="field">
-                        @Html.TextBoxFor(m => m.Name, new { @placeholder = "Event Name", @required = "required", @maxlength = "50" })
-                        <div class="line"></div>
-                    </div>
-                    <div class="field">
-                        @Html.TextBoxFor(m => m.Description, new { @placeholder = "Description", @required = "required", @maxlength = "200" })
-                        <div class="line"></div>
-                    </div>
-                    <div class="field">
-                        @Html.TextBoxFor(m => m.Location, new { @placeholder = "Location", @required = "required", @maxlength = "40" })
-                        <div class="line"></div>
-                    </div>
-                    <div>
-                        @Html.TextBoxFor(m => m.Reminder_Date, new { @type = "date", @class = "birth", @placeholder = "Date", @required = "required" })
-                    </div>
-                    <div class="field">
-                        @Html.TextBoxFor(m => m.User_Assigned_To, new { @type = "number", @placeholder = "Other User ID", @maxlength = "10" })
-                        <div class="line"></div>
-                    </div>
-                    <input type="submit" class="submit" value="Submit" name="CreateE" />
-                </div>
-        </div>
+            </div>
         }
         @using (Html.BeginForm("AssignEvent", "Event", FormMethod.Post))
         {
-        <div id="Assign" class="container hide">
-                <button id="closeButton" type="button" onclick="toggleContainer('Assign', event)" class="close-button">X</button>
-                <img src="/images/Events/Elogo.png" class="myImage">
-                <div class="event-container">
-                    <div class="field">
-                        @Html.TextBoxFor(m => m.Event_Id, new { @type = "number", @placeholder = "EventID", @maxlength = "10" })
-                        <div class="line"></div>
-                    </div>
-                    <div class="field">
-                        @Html.TextBoxFor(m => m.User_Assigned_To, new { @type = "number", @placeholder = "UserID", @maxlength = "10" })
-                        <div class="line"></div>
-                    </div>
-                    <input type="submit" class="submit" value="Submit" name="AssignE" />
+            if (TempData["AsMessage"] != null)
+            {
+                <div class="alert alert-success" role="alert">
+                    @TempData["AsMessage"]
                 </div>
-        </div>
+            }
+            <div id="Assign" class="container hide">
+                    <button id="closeButton" type="button" onclick="toggleContainer('Assign', event)" class="close-button">X</button>
+                    <img src="/images/Events/Elogo.png" class="myImage">
+                    <div class="event-container">
+                        <div class="field">
+                            @Html.TextBoxFor(m => m.Event_Id, new { @type = "number", @placeholder = "EventID", @maxlength = "10" })
+                            <div class="line"></div>
+                        </div>
+                        <div class="field">
+                            @Html.TextBoxFor(m => m.User_Assigned_To, new { @type = "number", @placeholder = "UserID", @maxlength = "10" })
+                            <div class="line"></div>
+                        </div>
+                        <input type="submit" class="submit" value="Submit" name="AssignE" />
+                    </div>
+            </div>
         }
         @using (Html.BeginForm("UninviteEvent", "Event", FormMethod.Post))
         {
-        <div id="Uninvite" class="container hide">
-                <button id="closeButton" type="button" onclick="toggleContainer('Uninvite', event)" class="close-button">X</button>
-                <img src="/images/Events/Elogo.png" class="myImage">
-                <div class="event-container">
-                    <div class="field">
-                        @Html.TextBoxFor(m => m.Event_Id, new { @type = "number", @placeholder = "EventID", @maxlength = "10" })
-                        <div class="line"></div>
-                    </div>
-                    <div class="field">
-                        @Html.TextBoxFor(m => m.User_Assigned_To, new { @type = "number", @placeholder = "UserID", @maxlength = "10" })
-                        <div class="line"></div>
-                    </div>
-                    <input type="submit" class="submit" value="Submit" name="UninviteE" />
+            if (TempData["INVMessage"] != null)
+            {
+                <div class="alert alert-success" role="alert">
+                    @TempData["INVMessage"]
                 </div>
-        </div>
+            }
+            <div id="Uninvite" class="container hide">
+                    <button id="closeButton" type="button" onclick="toggleContainer('Uninvite', event)" class="close-button">X</button>
+                    <img src="/images/Events/Elogo.png" class="myImage">
+                    <div class="event-container">
+                        <div class="field">
+                            @Html.TextBoxFor(m => m.Event_Id, new { @type = "number", @placeholder = "EventID", @maxlength = "10" })
+                            <div class="line"></div>
+                        </div>
+                        <div class="field">
+                            @Html.TextBoxFor(m => m.User_Assigned_To, new { @type = "number", @placeholder = "UserID", @maxlength = "10" })
+                            <div class="line"></div>
+                        </div>
+                        <input type="submit" class="submit" value="Submit" name="UninviteE" />
+                    </div>
+            </div>
         }
         @using (Html.BeginForm("SearchEvent", "Event", FormMethod.Post))
         {
-        <div id="Search" class="container hide">
-                <button id="closeButton" type="button" onclick="toggleContainer('Search', event)" class="close-button">X</button>
-                <img src="/images/Events/Elogo.png" class="myImage">
-                <div class="event-container">
-                    <div class="field">
-                        @Html.TextBoxFor(m => m.Event_Id, new { @type = "number", @placeholder = "EventID", @maxlength = "10" })
-                        <div class="line"></div>
-                    </div>
-                    <div class="field">
-                        @Html.TextBoxFor(m => m.User_Assigned_To, new { @type = "number", @placeholder = "UserID", @maxlength = "10" })
-                        <div class="line"></div>
-                    </div>
-                    <input type="submit" class="submit" value="Submit" name="SearchE" />
+            if (TempData["REMessage"] != null)
+            {
+                <div class="alert alert-success" role="alert">
+                    @TempData["REMessage"]
                 </div>
-        </div>
+            }
+            <div id="Search" class="container hide">
+                    <button id="closeButton" type="button" onclick="toggleContainer('Search', event)" class="close-button">X</button>
+                    <img src="/images/Events/Elogo.png" class="myImage">
+                    <div class="event-container">
+                        <div class="field">
+                            @Html.TextBoxFor(m => m.Event_Id, new { @type = "number", @placeholder = "EventID", @maxlength = "10" })
+                            <div class="line"></div>
+                        </div>
+                        <input type="submit" class="submit" value="Submit" name="SearchE" />
+                    </div>
+            </div>
         }
         @using (Html.BeginForm("RemoveEvent", "Event", FormMethod.Post))
         {
-        <div id="Remove" class="container">
-                <button id="closeButton" type="button" onclick="toggleContainer('Remove', event)" class="close-button">X</button>
-                <img src="/images/Events/Elogo.png" class="myImage">
-                <div class="event-container">
-                    <div class="field">
-                        @Html.TextBoxFor(m => m.Event_Id, new { @type = "number", @placeholder = "EventID", @maxlength = "10" })
-                        <div class="line"></div>
-                    </div>
-                    <div class="field">
-                        @Html.TextBoxFor(m => m.User_Assigned_To, new { @type = "number", @placeholder = "UserID", @maxlength = "10" })
-                        <div class="line"></div>
-                    </div>
-                    <input type="submit" class="submit" value="Submit" name="RemoveE" />
+            if (TempData["REMessage"] != null)
+            {
+                <div class="alert alert-success" role="alert">
+                    @TempData["REMessage"]
                 </div>
-        </div>
+            }
+            <div id="Remove" class="container">
+                    <button id="closeButton" type="button" onclick="toggleContainer('Remove', event)" class="close-button">X</button>
+                    <img src="/images/Events/Elogo.png" class="myImage">
+                    <div class="event-container">
+                        <div class="field">
+                            @Html.TextBoxFor(m => m.Event_Id, new { @type = "number", @placeholder = "EventID", @maxlength = "10" })
+                            <div class="line"></div>
+                        </div>
+                        <div class="field">
+                            @Html.TextBoxFor(m => m.User_Assigned_To, new { @type = "number", @placeholder = "UserID", @maxlength = "10" })
+                            <div class="line"></div>
+                        </div>
+                        <input type="submit" class="submit" value="Submit" name="RemoveE" />
+                    </div>
+            </div>
         }
         <div class="home-hero">
             <img alt="image" src="~/images/Events/INFO.png" class="home-image5" />
