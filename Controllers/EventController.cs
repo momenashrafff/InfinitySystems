@@ -23,6 +23,46 @@ namespace InfinitySystems.Controllers
             return View();
         }
 
+        [HttpPost]
+        [Route("CreateEvent")]
+        public IActionResult CreateEvent(Users user)
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        [Route("AssignEvent")]
+        public IActionResult AssignEvent(Users user)
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        [Route("UninviteEvent")]
+        public IActionResult UninviteEvent(Users user)
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        [Route("SearchEvent")]
+        public IActionResult SearchEvent(Users user)
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        [Route("RemoveEvent")]
+        public IActionResult RemoveEvent(Users user)
+        {
+
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

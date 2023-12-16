@@ -1,6 +1,6 @@
-
 @model InfinitySystems.Models.Task
 <head>
+    <meta charset="UTF-8" />
     <title>My Tasks - View and Manage</title>
     <script>
         function confirmFinish() {
@@ -9,109 +9,115 @@
             return confirm(message);
         }
     </script>
+    <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
+    
+    <div id="particles-js"></div>
+    <script type="text/javascript" src="~/js/particles.js"></script>
+    <script type="text/javascript" src="~/js/app.js"></script>
     <h1>My Tasks</h1>
-        @if (ViewBag.Tasks != null)
-        {
-            <table>
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Name</th>
-                        <th>Creation Date</th>
-                        <th>Due Date</th>
-                        <th>Category</th>
-                        <th>Creator</th>
-                        <th>Status</th>
-                        <th>Action</th>
-                        <th>Reminder Date</th>
-                        <th>Priority</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var task in ViewBag.tasks)
-                    {
-                        <tr>
-                            <td>@task.Id</td>
-                            <td>@task.Name</td>
-                            <td>@task.Creation_Date</td>
-                            <td>@task.Due_Date</td>
-                            <td>@task.Category</td>
-                            <td>@task.Creator</td>
-                            <td>@task.Status</td>
-                            <td>
-                                @using (Html.BeginForm("FinishTask", "Task", FormMethod.Post))
-                                {
-                                    <input type="hidden" id="taskname" name="title" value="@task.Name"/>
-                                    <input type="submit" value="Finish" onclick="return confirmFinish()" />
-                                }
-                            </td>
-                            <td>@task.Reminder_Date</td>
-                            <td>@task.Priority</td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-
-        }
-        @if (  TempData["AddReminder"] !=null )
-        {
-             @if (  TempData["AddReminder"].Equals("Done successfully!"))
+    @if (ViewBag.Tasks != null)
+    {
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Creation Date</th>
+                    <th>Due Date</th>
+                    <th>Category</th>
+                    <th>Creator</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                    <th>Reminder Date</th>
+                    <th>Priority</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var task in ViewBag.tasks)
                 {
-                    <div class="alert alert-success" role="alert">
-                      @TempData["AddReminder"]
-                    </div> 
+                    <tr>
+                        <td>@task.Id</td>
+                        <td>@task.Name</td>
+                        <td>@task.Creation_Date</td>
+                        <td>@task.Due_Date</td>
+                        <td>@task.Category</td>
+                        <td>@task.Creator</td>
+                        <td>@task.Status</td>
+                        <td>
+                            @using (Html.BeginForm("FinishTask", "Task", FormMethod.Post))
+                            {
+                                <input type="hidden" id="taskname" name="title" value="@task.Name" />
+                                <input type="submit" value="Finish" onclick="return confirmFinish()" />
+                            }
+                        </td>
+                        <td>@task.Reminder_Date</td>
+                        <td>@task.Priority</td>
+                    </tr>
                 }
-                else{
-                        <div class="alert alert-danger" role="alert">
-                            @TempData["AddReminder"]
-                         </div> 
-                }
-            
+            </tbody>
+        </table>
+    }
+    @if (TempData["AddReminder"] != null)
+    {
+        @if (TempData["AddReminder"].Equals("Done successfully!"))
+        {
+            <div class="alert alert-success" role="alert">
+                @TempData["AddReminder"]
+            </div>
         }
-
+        else
+        {
+            <div class="alert alert-danger" role="alert">
+                @TempData["AddReminder"]
+            </div>
+        }
+    }
     @using (Html.BeginForm("AddReminder", "Task", FormMethod.Post))
     {
         <input type="number" placeholder="taskid" name="taskid" required />
-        <input type="datetime-local" placeholder="ReminderDate" name="ReminderDate"  required />
+        <input type="datetime-local" placeholder="ReminderDate" name="ReminderDate" required />
         <input type="submit" value="Add Reminder" />
     }
-     @if (  TempData["UpdateTaskDeadline"]!=null )
+    @if (TempData["UpdateTaskDeadline"] != null)
+    {
+        @if (TempData["UpdateTaskDeadline"].Equals("Done successfully!"))
         {
-             @if (  TempData["UpdateTaskDeadline"].Equals("Done successfully!"))
-                {
-                    <div class="alert alert-success" role="alert">
-                      @TempData["UpdateTaskDeadline"]
-                    </div> 
-                }
-                else{
-                        <div class="alert alert-danger" role="alert">
-                            @TempData["UpdateTaskDeadline"]
-                         </div> 
-                }          
+            <div class="alert alert-success" role="alert">
+                @TempData["UpdateTaskDeadline"]
+            </div>
         }
-
+        else
+        {
+            <div class="alert alert-danger" role="alert">
+                @TempData["UpdateTaskDeadline"]
+            </div>
+        }
+    }
     @using (Html.BeginForm("UpdateTaskDeadline", "Task", FormMethod.Post))
     {
         <input type="number" placeholder="taskid" name="taskid" required />
-       <input type="datetime-local" placeholder="deadline" name="deadline"  required />
+        <input type="datetime-local" placeholder="deadline" name="deadline" required />
         <input type="submit" value="Update Task Deadline" />
     }
 </body>
-<!-- In the view file -->
+
 <html>
 <head>
     <style>
         /* Add some style to the form */
         form {
             margin: 20px;
+            z-index: 1;
         }
 
         input {
             width: 300px;
             padding: 10px;
             border: 1px solid #ccc;
+            color:white;
+            z-index: 1;
         }
 
         button {
@@ -120,6 +126,7 @@
             background-color: #28a745;
             color: white;
             border: none;
+            z-index: 1;
         }
     </style>
 </head>
@@ -129,6 +136,7 @@
 <style>
     button {
     background-color: steelblue;
+    z-index: 1;
 }
 </style>
 
@@ -136,6 +144,7 @@
 <style>
     h1 {
     text-align: center;
+        z-index: 1;
 }
 
     /* style.css file */
@@ -143,6 +152,9 @@
     /* Use a font-family that is easy to read */
     body {
         font-family: Arial, sans-serif;
+        background-color:black;
+        width: auto;
+        height: auto;
     }
 
     /* Add some margin and padding to the table */
@@ -150,6 +162,7 @@
         margin: 20px;
         padding: 10px;
         border-collapse: collapse;
+        z-index: 1;
     }
 
     /* Add some border and background color to the table cells */
@@ -157,6 +170,7 @@
         border: 1px solid black;
         padding: 5px;
         background-color: #f0f0f0;
+        z-index: 1;
     }
 
         /* Use different colors for the status column based on the value */
