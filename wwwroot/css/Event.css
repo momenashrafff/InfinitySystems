@@ -1,13 +1,14 @@
 ﻿.home-container {
-  width: 100%;
-  height: auto;
-  display: flex;
-  overflow: hidden;
-  min-height: 100vh;
-  align-items: center;
-  flex-direction: column;
-  justify-content: flex-start;
-  background-color: black;
+    width: 100%;
+    height: auto;
+    display: flex;
+    overflow: hidden;
+    min-height: 100vh;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: black;
+    /*box-shadow: inset 0 0 25px white;*/
 }
 .home-header {
   background-color: transparent;
@@ -20,7 +21,6 @@
   padding-top: 32px;
   padding-left: 48px;
   padding-right: 48px;
-  padding-bottom: 32px;
   justify-content: center;
 }
 .home-image {
@@ -41,15 +41,14 @@
   align-self: center;
 }
 .home-hero {
-  flex: 1;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  padding-left: 100px;
-  padding-right: 100px;
-  flex-direction: row;
-  background-color: black;
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 200px;
+    flex-direction: row;
+    background-color: transparent;
 }
 .home-image5 {
     width: 500px;
@@ -221,6 +220,9 @@
 
 .container {
     position: fixed;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%) translateY(110%);
@@ -229,7 +231,7 @@
     background-color: rgb(0,0,0,0.5);
     transition: transform 0.5s ease-in-out;
     white-space: nowrap;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(15px);
     box-shadow: 0 0 15px white;
     z-index: 2;
 }
@@ -244,11 +246,179 @@
 
 .close-button {
     position: absolute;
-    top: 25px;
-    right: 25px;
+    top: 15px;
+    right: 20px;
     background: none;
     border: none;
     font-size: 25px;
     cursor: pointer;
     color: white;
 }
+
+.myImage {
+    width: 150px;
+    height: auto;
+    z-index: 3;
+    margin-top: 25px;
+    filter: invert(1);
+}
+
+/*input Grid*/
+.event-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+    margin-top: 75px;
+    gap: 25px;
+    grid-auto-flow: row;
+    grid-template-areas:
+        "Input1"
+        "Input2"
+        "Input3"
+        "Input4"
+        "Input5"
+        "Submit";
+}
+
+/*Text Input*/
+input {
+    background: 0;
+    border: 0;
+    outline: none;
+    width: 80vw;
+    max-width: 400px;
+    font-size: 1.5em;
+    color: white;
+    transition: padding 0.3s 0.2s ease;
+}
+
+    input:focus {
+        padding-bottom: 5px;
+    }
+
+        input:focus + .line:after {
+            transform: scaleX(1);
+        }
+
+.field {
+    position: relative;
+}
+
+    .field .line {
+        width: 100%;
+        height: 3px;
+        position: absolute;
+        bottom: 5px;
+        background: #4f4f4f;
+    }
+
+    .field .line:after {
+        content: " ";
+        position: absolute;
+        float: right;
+        width: 100%;
+        height: 3px;
+        transform: scalex(0);
+        transition: transform 0.3s ease;
+        background: white;
+    }
+
+/*Submit button*/
+.submit {
+    position: relative;
+    width: 175px;
+    height: 50px;
+    margin-left: 110px;
+    font-family: 'Footlight MT';
+    font-size: 30px;
+    text-align: center;
+    color: white;
+    background-image: linear-gradient( -45deg, white 1%, rgb(128, 128, 128) 50%, white 100% );
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+}
+/*DateTime Input*/
+birthdate::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+input[type="date"] {
+    background: rgba(255, 255, 255, 0.0);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 15px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 18px;
+    outline: none;
+    border-radius: 50px;
+    text-align: center;
+}
+
+    input[type="date"]::-webkit-calendar-picker-indicator {
+        filter: invert(0.5) sepia(1) saturate(0) hue-rotate(175deg);
+    }
+
+::webkit-calendar-picker-indicator {
+    background: rgba(255, 255, 255, 0.4);
+    -webkit-backdrop-filter: blur(7px);
+    backdrop-filter: blur(7px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.birth {
+    height: 60px;
+    width: 180px;
+    outline: none;
+    border: none;
+    background: rgba(255, 255, 255, 0);
+    align-items: center;
+    justify-content: center;
+}
+
+/*User IDz*/
+input {
+    background: 0;
+    border: 0;
+    outline: none;
+    width: 80vw;
+    max-width: 400px;
+    font-size: 1.5em;
+    color: white;
+    transition: padding 0.3s 0.2s ease;
+}
+
+    input:focus {
+        padding-bottom: 5px;
+    }
+
+        input:focus + .line:after {
+            transform: scaleX(1);
+        }
+
+.field {
+    position: relative;
+}
+
+    .field .line {
+        width: 100%;
+        height: 3px;
+        position: absolute;
+        bottom: 5px;
+        background: #4f4f4f;
+    }
+
+        .field .line:after {
+            content: " ";
+            position: absolute;
+            float: right;
+            width: 100%;
+            height: 3px;
+            transform: scalex(0);
+            transition: transform 0.3s ease;
+            background: white;
+        }
