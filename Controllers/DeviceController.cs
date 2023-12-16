@@ -73,7 +73,7 @@ namespace InfinitySystems.Controllers
         [HttpPost]
         public IActionResult DeviceCharge(Device device)
         {
-            Console.WriteLine($"DeviceCharge action called with device id: {device.Id}");
+            // Console.WriteLine($"DeviceCharge action called with device id: {device.Id}");
             int? userId = HttpContext.Session.GetInt32("SessionUserId");
 
             if (userId == null || userId == -1)

@@ -1,6 +1,4 @@
-﻿console.log('site.js loaded');
-
-function executeDeviceChargeWithDelay(deviceId) {
+﻿function executeDeviceChargeWithDelay(deviceId) {
     var isRequestInProgress = false;
 
     if (!isRequestInProgress) {
@@ -22,7 +20,7 @@ function executeDeviceChargeWithDelay(deviceId) {
             // }
         });
     } else {
-        console.log('DeviceCharge action already in progress. Please wait.');
+        // console.log('DeviceCharge action already in progress. Please wait.');
     }
 }
 
@@ -35,7 +33,7 @@ $(document).ready(function () {
             var deviceId = $(this).find('[name="Id"]').val();
             executeDeviceChargeWithDelay(deviceId);
         } else {
-            console.log('DeviceCharge action already in progress. Please wait.');
+            // console.log('DeviceCharge action already in progress. Please wait.');
         }
     });
 });

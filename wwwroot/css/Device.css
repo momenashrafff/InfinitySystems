@@ -256,6 +256,7 @@ button {
     height: 254px;
     perspective: 1000px;
     margin: 5px;
+    /* float: left;- */
 }
   
 
@@ -291,10 +292,8 @@ button {
     height: 100%;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    /* border: 1px solid rgba(255, 255, 255, 0.8); */
     border-radius: 1rem;
     color: white;
-    /* box-shadow: 0 0 0.3em rgba(255, 255, 255, 0.5); */
     font-weight: 700;
   }
   
@@ -333,4 +332,63 @@ button {
     font-weight: 700;
     margin-bottom: 20px;
     color: #ffffff;
+}
+
+.Card {
+    background-color: transparent;
+    width: 254px;
+    height: 190px;
+    perspective: 1000px;
+    margin: 0 auto; /* Add margin auto to center horizontally */
+  }
+
+
+  
+/* birthdate::before */
+birthdate::after,
+input[type="date"] {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+input[type="date"] {
+    background: rgba(255, 255, 255, 0.0);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 15px;
+    color: rgba(255, 255, 255, 0.5); /* Match the text color */
+    font-size: 18px;
+    outline: none;
+    border-radius: 50px;
+    text-align: center;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.5) sepia(1) saturate(0) hue-rotate(175deg);
+}
+
+::webkit-calendar-picker-indicator {
+    background: rgba(255, 255, 255, 0.4);
+    -webkit-backdrop-filter: blur(7px);
+    backdrop-filter: blur(7px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+/* Applying the style to the date input in your form */
+input[type="datetime-local"] {
+    background: rgba(255, 255, 255, 0.0);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 15px;
+    color: rgba(255, 255, 255, 0.5); /* Match the text color */
+    font-size: 18px;
+    outline: none;
+    border-radius: 50px;
+    text-align: center;
+}
+
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.5) sepia(1) saturate(0) hue-rotate(175deg);
 }
