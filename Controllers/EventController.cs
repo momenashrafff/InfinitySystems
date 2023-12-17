@@ -42,18 +42,18 @@ namespace InfinitySystems.Controllers
             try
             {
                 int result = _context.Database.ExecuteSqlInterpolated($"CreateEvent @event_id={calendar.Event_Id}, @user_id ={Id.Value}, @name ={calendar.Name}, @location ={calendar.Location}, @description ={calendar.Location}, @reminder_date={calendar.Reminder_Date}, @other_user_id={calendar.User_Assigned_To}");
-                if (result > 0)
+                if (result > 0 || result < 0)
                 {
                     TempData["CMessage"] = "Event Has Been Created Successfully";
                 }
                 else
                 {
-                    TempData["CMessage"] = "Event Hasn't Been Created Successfully";
+                    TempData["CMessage"] = "UnSuccessful Creating Event";
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                TempData["CMessage"] = "An error occurred while creating the event.";
+                TempData["CMessage"] = "Error Occurred While Creating The Event.";
             }
             return RedirectToAction("Index", "Event");
         }
@@ -70,18 +70,18 @@ namespace InfinitySystems.Controllers
             try
             {
                 int result = _context.Database.ExecuteSqlInterpolated($"AssignUser @event_id={calendar.Event_Id}, @user_id ={calendar.User_Assigned_To}");
-                if (result > 0)
+                if (result > 0 || result < 0)
                 {
                     TempData["AsMessage"] = "Person Assigned Successfully";
                 }
                 else
                 {
-                    TempData["AsMessage"] = "Person Wasn't Assigned Successfully";
+                    TempData["AsMessage"] = "UnSuccessful Assigning Person To Event";
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                TempData["AsMessage"] = "An error occurred while assigning the person.";
+                TempData["AsMessage"] = "Error Occurred While Assigning The Person.";
             }
             return RedirectToAction("Index", "Event");
         }
@@ -98,18 +98,18 @@ namespace InfinitySystems.Controllers
             try
             {
                 int result = _context.Database.ExecuteSqlInterpolated($"Uninvited @event_id={calendar.Event_Id}, @user_id ={calendar.User_Assigned_To}");
-                if (result > 0)
+                if (result > 0 || result < 0)
                 {
-                    TempData["INVMessage"] = "User Uninvited To Event Successfully";
+                    TempData["INVMessage"] = "User Un-invited To Event Successfully";
                 }
                 else
                 {
-                    TempData["INVMessage"] = "User Was Uninvited To Event InSuccessfully";
+                    TempData["INVMessage"] = "UnSuccessful Un-inviting User From Event";
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                TempData["INVMessage"] = "An error occurred while uninviting the user.";
+                TempData["INVMessage"] = "Error Occurred While Uninviting The User.";
             }
             return RedirectToAction("Index", "Event");
         }
@@ -128,7 +128,7 @@ namespace InfinitySystems.Controllers
                 var events = _context.Calendars.FromSqlInterpolated($"EXECUTE ViewEvent @event_id={calendar.Event_Id}, @user_id ={Id.Value}").ToList();
                 ViewBag.Events = events;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 ViewBag.Events = "Couldnt Find Events Assigned To User";
             }
@@ -145,21 +145,26 @@ namespace InfinitySystems.Controllers
             {
                 return RedirectToAction("Login_Register", "Login_Register");
             }
+            if (HttpContext.Session.GetString("SessionUserType") == "Admin")
+            {
+                TempData["REMessage"] = "Only Admins Can Remove Events 'Contact An Admin Or Become One'";
+                return RedirectToAction("Login_Register", "Login_Register");
+            }
             try
             {
                 int result = _context.Database.ExecuteSqlInterpolated($"Uninvited @event_id={calendar.Event_Id}, @user_id ={Id.Value}");
-                if (result > 0)
+                if (result > 0 || result < 0)
                 {
                     TempData["REMessage"] = "Event Removed Successfully";
                 }
                 else
                 {
-                    TempData["REMessage"] = "Event wasn't Removed Successfully";
+                    TempData["REMessage"] = "UnSuccessful Removing Event";
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                TempData["REMessage"] = "An error occurred while removing the event.";
+                TempData["REMessage"] = "Error occurred while Removing The Event.";
             }
             return RedirectToAction("Index", "Event");
         }
