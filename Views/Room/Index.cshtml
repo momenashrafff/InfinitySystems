@@ -243,17 +243,17 @@
                 </div> 
               }
               <p>Schedule a Room</p>
-              <input type="number" name="RoomId" placeholder="Room Id"/>
+              <input type="number" name="RoomId" placeholder="Room Id" required/>
               <p>Pick Start Time</p>
               <div>
-                <input type="datetime-local" name="start" placeholder="Date"/>
+                <input type="datetime-local" name="start" placeholder="Date" required/>
               </div>
               <p>Pick End Time</p>
               <div>
-                <input type="datetime-local" name="end" placeholder="Time"/>
+                <input type="datetime-local" name="end" placeholder="Time" required/>
               </div>
               <div>
-                <input type="text" name="action" placeholder="Action"/>
+                <input type="text" name="action" placeholder="Action" required/>
               </div>
               <button type="submit">Schedule</button>
             }
@@ -275,10 +275,10 @@
               }
               <p>Choose Room</p>
               <div>
-                <input type="number" name="RoomId" placeholder="Room Id"/>
+                <input type="number" name="RoomId" placeholder="Room Id" required/>
               </div>
               <div>
-                <input type="text" name="status" placeholder="Status"/>
+                <input type="text" name="status" placeholder="Status" required/>
               </div>
               <div>
                 <button type="submit">Change</button> 

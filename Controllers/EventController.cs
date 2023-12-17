@@ -145,7 +145,7 @@ namespace InfinitySystems.Controllers
             {
                 return RedirectToAction("Login_Register", "Login_Register");
             }
-            if (HttpContext.Session.GetString("SessionUserType") == "Admin")
+            if (HttpContext.Session.GetString("SessionUserType") != "Admin")
             {
                 TempData["REMessage"] = "Only Admins Can Remove Events 'Contact An Admin Or Become One'";
                 return RedirectToAction("Login_Register", "Login_Register");
