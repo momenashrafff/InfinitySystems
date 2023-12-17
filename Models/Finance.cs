@@ -13,7 +13,7 @@ namespace InfinitySystems.Models
         [Key]
         public int Payment_Id { get; set; }
         [ForeignKey("User_Id")]
-        public string? User_Id { get; set; }
+        public int? User_Id { get; set; }
         // public Users? User_Id { get; set; }
         public string? Type { get; set; }
         public int? Amount { get; set; }

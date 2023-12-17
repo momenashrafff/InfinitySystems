@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/Device.css" />
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <title>Finance</title>
+</head>
+<body>
+    <div id="particles-js"></div>
+    <script type="text/javascript" src="/js/particles.js"></script>
+    <script type="text/javascript" src="/js/app.js"></script>
+    <header>
+        <nav>
+            <ul class="nav__links">
+                <li class="nav__left"><a href="/Finance/Index">Finance</a></li>
+                <li><a href="/HomePage/Index">Home</a></li>
+                <li><a href="/Room/Index">Rooms</a></li>
+                <li><a href="/Event/Index">Events</a></li>
+                <li><a href="/Task/Index">Tasks</a></li>
+                <li><a href="/Comms/Index">Comms</a></li>
+                <li><a href="/Device/Index">Devices</a></li>
+                <li class="nav__right"><a href="/Login_Register/Login_Register">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1>Receive Money</h1>
+    @if(TempData["ReceiveMoneyMessage"] != null){
+        <alert class="alert-success">@TempData["ReceiveMoneyMessage"]</alert>
+    }
+    @if(TempData["ReceiveMoneyError"] != null){
+        <alert class="alert-danger">@TempData["ReceiveMoneyError"]</alert>
+    }
+    @using(Html.BeginForm("ReceiveMoney", "Finance" , FormMethod.Post))
+    {
+        <input type="number" name="sender_id" placeholder="Sender ID" />
+        <input type="text" name="type" placeholder="Type" />
+        <input type="number" name="amount" placeholder="Amount" />
+        <input type="text" name="status" placeholder="Status" />
+        <input type="datetime-local" name="date" placeholder="Date" />
+        <button type="submit">Receive Money</button>
+    }
+    <br>
+    <br>
+
+    <h1>Plan Payment</h1>
+    @if(TempData["PlanPaymentMessage"] != null){
+        <alert class="alert-success">@TempData["PlanPaymentMessage"]</alert>
+    }
+    @if(TempData["PlanPaymentError"] != null){
+        <alert class="alert-danger">@TempData["PlanPaymentError"]</alert>
+    }
+    @using(Html.BeginForm("PlanPayment", "Finance" , FormMethod.Post))
+    {
+        <input type="number" name="sender_id" placeholder="Sender ID" />
+        <input type="number" name="receiver_id" placeholder="Receiver ID" />
+        <input type="number" name="amount" placeholder="Amount" />
+        <input type="text" name="status" placeholder="Status" />
+        <input type="datetime-local" name="deadline" placeholder="Date" />
+        <button type="submit">Plan Payment</button>
+    }
+</body>
+</html>

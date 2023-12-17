@@ -1,6 +1,5 @@
 @model InfinitySystems.Models.Task
 <head>
-    <meta charset="UTF-8" />
     <title>My Tasks - View and Manage</title>
     <script>
         function confirmFinish() {
@@ -9,13 +8,8 @@
             return confirm(message);
         }
     </script>
-    <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
-    
-    <div id="particles-js"></div>
-    <script type="text/javascript" src="~/js/particles.js"></script>
-    <script type="text/javascript" src="~/js/app.js"></script>
     <h1>My Tasks</h1>
     @if (ViewBag.Tasks != null)
     {
@@ -58,6 +52,7 @@
                 }
             </tbody>
         </table>
+
     }
     @if (TempData["AddReminder"] != null)
     {
@@ -73,7 +68,9 @@
                 @TempData["AddReminder"]
             </div>
         }
+
     }
+
     @using (Html.BeginForm("AddReminder", "Task", FormMethod.Post))
     {
         <input type="number" placeholder="taskid" name="taskid" required />
@@ -95,6 +92,7 @@
             </div>
         }
     }
+
     @using (Html.BeginForm("UpdateTaskDeadline", "Task", FormMethod.Post))
     {
         <input type="number" placeholder="taskid" name="taskid" required />
@@ -102,22 +100,19 @@
         <input type="submit" value="Update Task Deadline" />
     }
 </body>
-
+<!-- In the view file -->
 <html>
 <head>
     <style>
         /* Add some style to the form */
         form {
             margin: 20px;
-            z-index: 1;
         }
 
         input {
             width: 300px;
             padding: 10px;
             border: 1px solid #ccc;
-            color:white;
-            z-index: 1;
         }
 
         button {
@@ -126,35 +121,29 @@
             background-color: #28a745;
             color: white;
             border: none;
-            z-index: 1;
         }
     </style>
 </head>
 
 
-    
+
 <style>
     button {
-    background-color: steelblue;
-    z-index: 1;
-}
+        background-color: steelblue;
+    }
 </style>
 
 
 <style>
     h1 {
-    text-align: center;
-        z-index: 1;
-}
+        text-align: center;
+    }
 
     /* style.css file */
 
     /* Use a font-family that is easy to read */
     body {
         font-family: Arial, sans-serif;
-        background-color:black;
-        width: auto;
-        height: auto;
     }
 
     /* Add some margin and padding to the table */
@@ -162,7 +151,6 @@
         margin: 20px;
         padding: 10px;
         border-collapse: collapse;
-        z-index: 1;
     }
 
     /* Add some border and background color to the table cells */
@@ -170,15 +158,14 @@
         border: 1px solid black;
         padding: 5px;
         background-color: #f0f0f0;
-        z-index: 1;
     }
 
         /* Use different colors for the status column based on the value */
         td:nth-child(7) {
-            color: white;
+            color: black;
         }
 
-            td:nth-child(7):contains('Completed') {
+            td:nth-child(7):contains('Done') {
                 background-color: green;
             }
 

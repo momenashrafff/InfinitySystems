@@ -11,10 +11,10 @@ namespace InfinitySystems.Models
         [Key]
         public int Message_Id { get; set; }
         [ForeignKey("Sender_Id")]
-        public string? Sender_Id { get; set; }
+        public int? Sender_Id { get; set; }
         // public Users? Sender_Id { get; set; }
         [ForeignKey("Receiver_Id")]
-        public string? Receiver_Id { get; set; }
+        public int? Receiver_Id { get; set; }
         // public Users? Receiver_Id { get; set; }
         public string? Content { get; set; }
         public TimeOnly? Time_Sent { get; set; }

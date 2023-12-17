@@ -1,0 +1,105 @@
+@model IEnumerable<Communication>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/Device.css" />
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <title>Comminications</title>
+</head>
+<body>
+    <div id="particles-js"></div>
+    <script type="text/javascript" src="/js/particles.js"></script>
+    <script type="text/javascript" src="/js/app.js"></script>
+    <header>
+        <nav>
+            <ul class="nav__links">
+                <li class="nav__left"><a href="/Comms/Index">Communications</a></li>
+                <li><a href="/HomePage/Index">Home</a></li>
+                <li><a href="/Room/Index">Rooms</a></li>
+                <li><a href="/Event/Index">Events</a></li>
+                <li><a href="/Task/Index">Tasks</a></li>
+                <li><a href="/Finance/Index">Finance</a></li>
+                <li><a href="/Device/Index">Devices</a></li>
+                <li class="nav__right"><a href="/Login_Register/Login_Register">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1>Send Message</h1>
+    @using(Html.BeginForm("SendMessage", "Comms", FormMethod.Post)){
+        if(TempData["SendMessageMessage"] != null){
+        <div class="alert alert-success" role="alert">
+            @TempData["SendMessageMessage"]
+        </div>
+        }
+        if(TempData["SendMessageError"] != null){
+        <div class="alert alert-danger" role="alert">
+            @TempData["SendMessageError"]
+        </div> 
+        }
+        <input type="number" name="receiver_id" placeholder="Enter Receiver Id" required="required" />
+        <input type="text" name="title" placeholder="Enter Title" required="required" />
+        <input type="text" name="content" placeholder="Enter Content" required="required" />
+        <div>
+        <button type="submit">Send</button>
+        </div>
+    }
+    <br>
+    <br>
+    @if(ViewBag.isAdmin){
+        @using(Html.BeginForm("DeleteMsg", "Comms", FormMethod.Post)){
+            if(TempData["DeleteMsg"] != null){
+            <div class="alert alert-success" role="alert">
+                @TempData["DeleteMsg"]
+            </div>
+            }
+            if(TempData["DeletingMessageError"] != null){
+            <div class="alert alert-danger" role="alert">
+                @TempData["DeletingMessageError"]
+            </div> 
+            }
+            <div>
+            <button type="submit">Delete</button>
+            </div>
+        }
+    }
+    <br>
+    <br>
+    <h1>Messages</h1>
+    @using(Html.BeginForm("ShowMessages", "Comms", FormMethod.Post)){
+        <input type="number" name="sender_id" placeholder="Enter Sender Id" required="required"/>
+        <div>
+        <button type="submit">Show</button>
+        </div>
+    }
+    @if(TempData["ShowMessage"] != null){
+        foreach(var Message in Model)
+        {
+            <h3>Message ID: @Html.DisplayFor(modelItem => Message.Message_Id) </h3>
+            <h3>Sender ID: @Html.DisplayFor(modelItem => Message.Sender_Id) </h3>
+            <h3>Receiver ID: @Html.DisplayFor(modelItem => Message.Receiver_Id) </h3>
+            <h3>Title: @Html.DisplayFor(modelItem => Message.Title) </h3>
+            <h3>Content: @Html.DisplayFor(modelItem => Message.Content) </h3>
+            <h3>Time Sent: @Html.DisplayFor(modelItem => Message.Time_Sent) </h3>
+            <h3>Time Received: @Html.DisplayFor(modelItem => Message.Time_Received) </h3>
+            <h3>Time Read: @Html.DisplayFor(modelItem => Message.Time_Read) </h3>
+
+            
+            <br>
+            <br>
+        }
+    }
+    
+    @if(TempData["NoShowMessage"] != null){
+        <div class="alert alert-danger" role="alert">
+            @TempData["NoShowMessage"]
+        </div> 
+    }
+    
+</body>
+</html>

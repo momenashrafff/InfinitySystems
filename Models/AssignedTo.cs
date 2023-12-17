@@ -16,7 +16,7 @@ namespace InfinitySystems.Models
         public int Task_Id { get; set; }
         // public Task? Task_Id { get; set; }
         [ForeignKey("User_Id")]
-        public string? User_Id { get; set; }
+        public int? User_Id { get; set; }
         // public Users? User_Id { get; set; }
 
     }

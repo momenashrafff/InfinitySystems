@@ -37,7 +37,8 @@ namespace InfinitySystems.Controllers
             {
                 return RedirectToAction("Login_Register", "Login_Register");
             }
-            var result = _context.Tasks.FromSqlRaw("EXEC ViewMyTask @user_id={0}", Id.Value).ToList();
+            int? user_id = HttpContext.Session.GetInt32("SessionUserId");
+            var result = _context.Tasks.FromSqlRaw("EXEC ViewMyTask @user_id={0}", user_id).ToList();
             ViewBag.tasks = result;
             return View(task);
         }
@@ -98,4 +99,3 @@ namespace InfinitySystems.Controllers
         }
     }
 }
-

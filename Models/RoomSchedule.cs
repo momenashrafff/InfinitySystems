@@ -9,7 +9,7 @@ namespace InfinitySystems.Models
     public class RoomSchedule
     {
         [ForeignKey("Creator_Id")]
-        public string? Creator_Id { get; set; }
+        public int? Creator_Id { get; set; }
         // public Users? Creator_Id { get; set; }
         public string? Action { get; set; }
         [ForeignKey("Room")]
